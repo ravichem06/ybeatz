@@ -67,13 +67,41 @@
                         <ul class="flickr-feed"></ul>
                     </div>
                     <div class="span4 contact-us">
-                        <h3>Contact Us</h3>
+                        <!-- <h3>Contact Us</h3>
                         <form action="assets/contact.php" method="post">
                             <input type="text" name="name" class="name" placeholder="Name">
                             <input type="text" name="email" class="email" placeholder="Email">
                             <textarea name="message" placeholder="Message"></textarea>
                             <button type="submit">Submit</button>
-                        </form>
+                        </form> -->
+                         
+<% if !flash[:notice].blank? %>
+        <div class="notice">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if !flash[:error].blank? %>
+        <div class="error">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+
+  <h3>Send A message to Us</h3>
+<div class = "contact">
+  <%= simple_form_for :contact, :url=> {:controller =>'contacts',:action => 'new'}, :html => {:class => 'form-horizontal' } do |f| %>
+    <%= f.input :name, :placeholder=> 'Name', :required => true , :label => false%><br/>
+    <%= f.input :email, :placeholder=> 'Email', :required => true , :label => false%><br>
+    <%= f.input :message, :placeholder => 'Enter Message',:as => :text , :required => false, :label => false%>
+    <div class= "hidden">
+      <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+    </div>
+    
+      </br>
+      <div>
+      <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
+    </div> 
+    </div> 
+  <% end %>       
                     </div>
                 </div> <!-- end row -->
                 <div class="row">

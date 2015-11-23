@@ -1,4 +1,29 @@
 
-		<%= f.text_field(:email, :class=>"email", :placeholder=>'Enter your email')%>
-          
-        <%= submit_tag("Subscribe!", :class=>'subscribe', :type=> :button) %>
+		<%= stylesheet_link_tag 'custom', media: 'all' %>
+<% if !flash[:notice].blank? %>
+        <div class="notice">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+<div align="center">
+  <h3>Send A message to Us</h3>
+
+
+  
+  <%= f.error_notification %>
+  <%= f.input :name, :required => true, placeholder: 'Name' %>
+  <%= f.input :email, placeholder: 'Email' %>
+  <%= f.input :message, :as => :text, :required => true, placeholder: 'Message' %>
+
+  
+
+  
+    <div class= "hidden">
+      <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+    </div>
+    <div>
+      </br>
+      <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
