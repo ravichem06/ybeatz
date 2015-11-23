@@ -16,9 +16,9 @@ def create
     if @subscriber.save
       
       # If save succeeds, redirect to the index action
-      flash[:notice] = "Your ID was entered successfully."
+      flash[:notice] = "Thank You for subscribing. Your Email ID has been entered successfully into our database."
       
-      redirect_to(:action => 'thank_you')
+      redirect_to(:action => 'index')
     else
       # If save fails, redisplay the form so user can fix problems
       
@@ -26,9 +26,7 @@ def create
     end
   end
 
-  def thank_you
 
-  end
 
   
   

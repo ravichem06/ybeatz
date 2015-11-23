@@ -1,15 +1,16 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
 
         <meta charset="utf-8">
-        <title>Produkta - Responsive Product Showcase</title>
+        <title>YBeatz - Coming Soon</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-
+        <%= favicon_link_tag 'favicon.ico' %>
         <!-- CSS -->
         <%= stylesheet_link_tag    'http://fonts.googleapis.com/css?family=PT+Sans:400,700', media: 'all' %>
         <%= stylesheet_link_tag    "bootstrap.min.css" %>
@@ -29,22 +30,43 @@
         <![endif]-->
 
         <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="assets/ico/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="apple-touch-icon" sizes="57x57" href="../assets/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../assets/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../assets/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../assets/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../assets/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../assets/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../assets/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../assets/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="../assets/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+<link rel="manifest" href="manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="../assets/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 
     </head>
 
     <body>
-
+<% if !flash[:error].blank? %>
+        <div class="error">
+          <img src="../assets/alerts/error.png" width = "20" height="20">&nbsp<%= flash[:error] %>
+        </div>
+      <% end %>
+      <% if !flash[:notice].blank? %>
+        <div class="notice">
+          <img src="../assets/alerts/success.png" width = "24" height="24">&nbsp<%= flash[:notice] %>
+        </div>
+      <% end %>
         <!-- Header -->
         <div class="container">
             <div class="header row">
             
                 <div class="logo span4">
-                    <h2><a href="">yBeatz</a></h2>
+                    <h2><a href="/">yBeatz</a></h2>
                 </div>
                 <!-- <div class="tel-skype span8">
                     <p><i class="icon-phone-sign"></i> Phone: 0039 123 45 679 <span class="pipe">|</span> <i class="icon-user"></i> Skype: hello@domain.com</p>
@@ -75,18 +97,12 @@
                             <button type="submit">Submit</button>
                         </form> -->
                          
-<% if !flash[:notice].blank? %>
-        <div class="notice">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-      <% if !flash[:error].blank? %>
-        <div class="error">
-          <%= flash[:error] %>
-        </div>
-      <% end %>
+
 
   <h3>Send A message to Us</h3>
+
+      
+
 <div class = "contact">
   <%= simple_form_for :contact, :url=> {:controller =>'contacts',:action => 'new'}, :html => {:class => 'form-horizontal' } do |f| %>
     <%= f.input :name, :placeholder=> 'Name', :required => true , :label => false%><br/>
