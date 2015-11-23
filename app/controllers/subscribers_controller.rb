@@ -1,13 +1,11 @@
-class LandingPageController < ApplicationController
+class SubscribersController < ApplicationController
 
-layout 'landing_page'
 
-def index
-	
 
-end
+layout false
 
-def create
+
+  def create
     # Instantiate a new object using form parameters
     
     @subscriber = Subscriber.new(subscriber_params)
@@ -22,14 +20,15 @@ def create
     else
       # If save fails, redisplay the form so user can fix problems
       
-      render('index')
+      render(:controller=>'landing_page', :action=>'index')
     end
   end
+
+  
 
   def thank_you
 
   end
-  
 
   private
 
