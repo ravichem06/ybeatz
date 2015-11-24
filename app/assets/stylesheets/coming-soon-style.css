@@ -496,7 +496,6 @@ footer a:hover { color: #aaa; }
 .contact-us form input, .contact-us form textarea {
     width: 75%;
     padding: 8px 15px;
-    background: #222;
     border: 0;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
