@@ -1,3 +1,4 @@
+
 class LandingPageController < ApplicationController
 
 layout 'landing_page'
@@ -5,7 +6,11 @@ layout 'landing_page'
 def index
 	
 
+
 end
+
+
+
 
 def create
     # Instantiate a new object using form parameters
@@ -13,15 +18,35 @@ def create
     @subscriber = Subscriber.new(subscriber_params)
     
     # Save the object
-    if @subscriber.save
-      
-      # If save succeeds, redirect to the index action
-      flash[:notice] = "Thank You for subscribing. Your Email ID has been entered successfully into our database."
-      
-      redirect_to(:action => 'index')
-    else
-      # If save fails, redisplay the form so user can fix problems
-      
+    if @subscriber.present?
+      puts @subscriber
+      if @subscriber.valid?
+
+        if @subscriber.save(subscriber_params)
+           # puts "Subscriber has been saved."
+          #@subscriber.subscribe
+        
+    
+ 
+
+          # If save succeeds, redirect to the index action
+          flash[:notice] = "Thank You for subscribing. Your Email ID: #{@subscriber.email} has been subscribed."
+          
+          redirect_to(:action => 'index')
+        else
+          # If save fails, redisplay the form so user can fix problems
+          
+          render('index')
+        end
+
+        else
+        flash[:error] = "Please enter a valid Email Address."
+        render('index')
+      end
+
+    else 
+
+      flash[:error] = "Please enter an Email Address."
       render('index')
     end
   end

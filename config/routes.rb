@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   root 'landing_page#index'
 
   match '/contacts',     to: 'contacts#new',             via: 'get'
-resources "contacts", only: [:new, :create]
-  
+  resources "contacts", only: [:new, :create]
+  resources :subscribers, only: [:index, :create]
   match ':controller(/:action(/:id))', :via => [:get, :post]
 
   # Example of regular route:

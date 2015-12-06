@@ -24,7 +24,7 @@
                                             <input type="text" name="email" class="email" placeholder="Enter your email">
                                             <button type="submit">Subscribe!</button> -->
                                             <%= form_for(:subscriber, :url => {:controller =>'landing_page',:action => 'create'} ) do |f| %>
-        <%= f.text_field(:email, :class=>"email", :placeholder=>'Enter your email')%>
+        <%= f.email_field :email, :class=>"email", :placeholder=>'Enter your email'%>
           
         <%= submit_tag("Subscribe!", :class=>'subscribe') %>
     
