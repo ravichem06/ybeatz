@@ -8,12 +8,16 @@ Rails.application.config.assets.precompile += %w( bootstrap.min.css )
 Rails.application.config.assets.precompile += %w( coming-soon-style.css )
 Rails.application.config.assets.precompile += %w( font-awesome.css )
 Rails.application.config.assets.precompile += %w( social-icons.css )
-Rails.application.config.assets.precompile += %w( jquery-1.8.2.min.js )
+Rails.application.config.assets.precompile += %w( style.css )
+Rails.application.config.assets.precompile += %w( font-awesome.min.css )
+Rails.application.config.assets.precompile += %w( jquery-1.11.3.min.js )
 Rails.application.config.assets.precompile += %w( jquery.backstretch.min.js )
 Rails.application.config.assets.precompile += %w( jquery.tweet.js )
 Rails.application.config.assets.precompile += %w( jflickrfeed.js )
 Rails.application.config.assets.precompile += %w( coming-soon-scripts.js )
-
+Rails.application.config.assets.precompile += %w( bootstrap.js )
+Rails.application.config.assets.precompile += %w( bootstrap.min.js )
+Rails.application.config.assets.precompile += %w( modernizr-2.6.2.min.js )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path

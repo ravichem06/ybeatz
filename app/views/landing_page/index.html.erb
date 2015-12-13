@@ -6,28 +6,20 @@
                     <div class="row">
                         <div class="span12 product-background">
                             <div class="row">
-                                <div class="span6">
+                                <div class="span6 col-md-6" >
                                     <h1>We are <strong>coming soon</strong></h1>
-                                    <!-- <div class="product-description">
-                                        <div class="timer">
-                                            <span class="days"></span> days /
-                                            <span class="hours"></span> hours /
-                                            <span class="minutes"></span> minutes /
-                                            <span class="seconds"></span> seconds
-                                        </div>
-                                    </div> -->
+                                    
                                 </div>
-                                <div class="span6">
-                                    <div class="product-description product-description-right">
+                                
+                                <div class="span6 col-md-6" >
+                                    <div class="product-description product-description-right" style="width: 100%, color: #fff">
                                         <p>We are working very hard on the new version of our site. It will bring a lot of new features. Enter your email in the form below and we’ll notify you as soon as we’re ready:</p>
-                                        <!-- <form action="assets/subscribe.php" method="post" class="subscribe">
-                                            <input type="text" name="email" class="email" placeholder="Enter your email">
-                                            <button type="submit">Subscribe!</button> -->
+                                        
                                             <%= form_for(:subscriber, :url => {:controller =>'landing_page',:action => 'create'} ) do |f| %>
         <%= f.email_field :email, :class=>"email", :placeholder=>'Enter your email'%>
-          
+         
         <%= submit_tag("Subscribe!", :class=>'subscribe') %>
-    
+         
     <%end%>
                                         </form>
                                     </div>
