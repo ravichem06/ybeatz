@@ -1,12 +1,10 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
 
         <meta charset="utf-8">
-        <title>YBeatz - Coming Soon</title>
+        <title>Sign Up</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -19,6 +17,7 @@
         <%= stylesheet_link_tag    "social-icons.css" %>
         <%= stylesheet_link_tag    "coming-soon-style.css" %>
         <%= stylesheet_link_tag    "style.css" %>
+        <%= stylesheet_link_tag    "users.css" %>
         <%= stylesheet_link_tag    "font-awesome.min.css" %>
         <!-- Javascript -->
         
@@ -75,18 +74,7 @@
     setTimeout("$('.error_msgs').fadeOut('slow')", 5000)
   </script>
   
-        <!-- Header -->
-       <!--  <div class="container">
-            <div class="header row">
-            
-                <div class="logo span4">
-                    <h2><a href="/">yBeatz</a></h2>
-                </div>
-                <div class="tel-skype span8">
-                    <p><i class="icon-phone-sign"></i> Phone: 0039 123 45 679 <span class="pipe">|</span> <i class="icon-user"></i> Skype: hello@domain.com</p>
-                </div>
-            </div>
-        </div> -->
+       
    <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -99,27 +87,25 @@
           <a class="navbar-brand" href="/">yBeatz</a>
           </div>
         </div>
-        <!-- <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li class="active"><%#=link_to("HOME", :controller=> "landing_page")%></li>
-            <li><%#=link_to("EVENTS", :controller=> "events")%></li>
+            <li class="active"><%=link_to("HOME", :controller=> "landing_page")%></li>
+            <li><%=link_to("EVENTS", :controller=> "events")%></li>
            </ul>
-           <ul class="nav navbar-nav navbar-right"> 
+            <ul class="nav navbar-nav navbar-right"> 
             <li><a href="services.html">Log In</a></li>
-            <li><%#=link_to("Sign Up", :controller=> "users" , :action => 'new' )%>
+            <li><%=link_to("Sign Up", :controller=> "users" , :action => 'new' )%>
 
 
             </li>
             
           </ul>
-        </div>  -->
-       </div> 
+        </div><!--/.nav-collapse -->
+      </div>
     </div>
 
 
-        	<!--sign up form end-->
-
-            <%= yield %> 
+           <%= yield %> 
 
      <footer>
             <div class="container">
@@ -133,13 +119,7 @@
                         <ul class="flickr-feed"></ul>
                     </div>
                     <div class="span4 contact-us col-md-4" >
-                        <!-- <h3>Contact Us</h3>
-                        <form action="assets/contact.php" method="post">
-                            <input type="text" name="name" class="name" placeholder="Name">
-                            <input type="text" name="email" class="email" placeholder="Email">
-                            <textarea name="message" placeholder="Message"></textarea>
-                            <button type="submit">Submit</button>
-                        </form> -->
+                       
                          
 
 
@@ -194,4 +174,3 @@
     </body>
 
 </html>
-
