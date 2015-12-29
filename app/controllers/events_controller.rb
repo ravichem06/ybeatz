@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   layout  'events'
-
+  before_action :confirm_logged_in
   # GET /events
   # GET /events.json
   def index

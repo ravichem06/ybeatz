@@ -15,6 +15,7 @@
         <%= stylesheet_link_tag    'http://fonts.googleapis.com/css?family=PT+Sans:400,700', media: 'all' %>
         
         <%= stylesheet_link_tag    "bootstrap.css" %>
+        
         <%= stylesheet_link_tag    "font-awesome.css" %>
         <%= stylesheet_link_tag    "social-icons.css" %>
         <%= stylesheet_link_tag    "style.css" %>
@@ -71,18 +72,7 @@
     setTimeout("$('.error_msgs').fadeOut('slow')", 5000)
   </script>
   
-        <!-- Header -->
-       <!--  <div class="container">
-            <div class="header row">
-            
-                <div class="logo span4">
-                    <h2><a href="/">yBeatz</a></h2>
-                </div>
-                <div class="tel-skype span8">
-                    <p><i class="icon-phone-sign"></i> Phone: 0039 123 45 679 <span class="pipe">|</span> <i class="icon-user"></i> Skype: hello@domain.com</p>
-                </div>
-            </div>
-        </div> -->
+       
    <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -100,66 +90,25 @@
             <li><%=link_to("HOME", :controller=> "landing_page")%></a></li>
             <li class="active"><%=link_to("EVENTS", :controller=> "events")%></li>
            </ul>
+           <div class="sign-in">
            <ul class="nav navbar-nav navbar-right"> 
-            <li><a href="services.html">Log In</a></li>
-            <li><button type="button" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">Join Us</button></li>
+            <li><div>
+  <% if current_user %>
+    Signed in as <strong><%= current_user.name %></strong>!
+    <%= link_to "Sign out", signout_path, id: "sign_out" , class: "sign-out btn btn-primary btn-lg"%>
+  <% else %>
+  <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" , class: "btn btn-facebook"%>
+    
+  <% end %>
+  </div>
+</li>           
             
-          </ul>
+          </ul></div>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
-<!--sign up form start-->
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header login_modal_header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h2 class="modal-title" id="myModalLabel">Join Us</h2>
-            </div>
-            <div class="modal-body login-modal">
-                
-                <br/>
-                <div class="clearfix"></div>
-                <div id='social-icons-conatainer'>
-                    <div class='modal-body-left'>
-                        <div class="form-group">
-                            <input type="text" id="username" placeholder="Enter your name" value="" class="form-control login-field">
-                            <span class="glyphicon glyphicon-user login-field-icon"></span>
-                        </div>
-        
-                        <div class="form-group">
-                            <input type="password" id="login-pass" placeholder="Password" value="" class="form-control login-field">
-                            <i class="glyphicon glyphicon-lock login-field-icon"></i>
-                        </div>
-        
-                        <a href="#" class="btn btn-primary modal-login-btn">Join</a>
-                        <a href="#" class="login-link text-center">Forgot Password</a>
-                    </div>
-                
-                    <div class='modal-body-right'>
-                        <div class="modal-social-icons">
-                            <a href='#' class="btn btn-default facebook-form"> <i class="fa fa-facebook modal-icons"></i> Join with Facebook </a>
-                            <a href='#' class="btn btn-default twitter-form"> <i class="fa fa-twitter modal-icons"></i> Join with Twitter </a>
-                            <a href='#' class="btn btn-default google-form"> <i class="fa fa-google-plus modal-icons"></i> Join with Google </a>
-                            <a href='#' class="btn btn-default linkedin-form"> <i class="fa fa-linkedin modal-icons"></i> Join with Linkedin </a>
-                        </div> 
-                    </div>  
-                    <div id='center-line'> OR </div>
-                </div>                                                                                                              
-                <div class="clearfix"></div>
-                
-                <div class="form-group modal-register-btn">
-                    <button class="btn btn-default"> Already have an account? Log In here</button>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="modal-footer login_modal_footer">
-            </div>
-        </div>
-    </div>
-</div>
-        	<!--sign up form end-->
+
 
             <%= yield %> 
 
@@ -175,13 +124,7 @@
                         <ul class="flickr-feed"></ul>
                     </div>
                     <div class="span4 contact-us col-md-4" >
-                        <!-- <h3>Contact Us</h3>
-                        <form action="assets/contact.php" method="post">
-                            <input type="text" name="name" class="name" placeholder="Name">
-                            <input type="text" name="email" class="email" placeholder="Email">
-                            <textarea name="message" placeholder="Message"></textarea>
-                            <button type="submit">Submit</button>
-                        </form> -->
+                        
                          
 
 
@@ -209,7 +152,7 @@
                 <div class="row">
                     <div class="span12">
                         <div class="social-links">
-                            <a class="facebook" href="#"></a>
+                            <a class="facebook" href="https://www.facebook.com/ybeatz4artists/"></a>
                             <a class="twitter" href="#"></a>
                             <a class="dribbble" href="#"></a>
                             <a class="pinterest" href="#"></a>
@@ -218,7 +161,7 @@
                             <a class="youtube" href="#"></a>
                             <a class="vimeo" href="#"></a>
                             <a class="forrst" href="#"></a>
-                            <a class="email" href="#"></a>
+                            <a class="email" href="mailto:ybeatz@outlook.in"></a>
                         </div>
                     </div>
                 </div> <!-- end row -->
