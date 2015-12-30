@@ -22,8 +22,11 @@ ActiveRecord::Schema.define(version: 20151225095053) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "event_name", limit: 255
+    t.datetime "date"
+    t.string   "place",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "subscribers", force: :cascade do |t|

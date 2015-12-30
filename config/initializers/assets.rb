@@ -20,6 +20,10 @@ Rails.application.config.assets.precompile += %w( bootstrap.min.js )
 Rails.application.config.assets.precompile += %w( modernizr-2.6.2.min.js )
 Rails.application.config.assets.precompile += %w( users.css )
 Rails.application.config.assets.precompile += %w( social-buttons.css )
+Rails.application.config.assets.precompile += %w( all.css )
+Rails.application.config.assets.precompile += %w( app.css )
+Rails.application.config.assets.precompile += %w( skin-blue.css )
+Rails.application.config.assets.precompile += %w( theme.css )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

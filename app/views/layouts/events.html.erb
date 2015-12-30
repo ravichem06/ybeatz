@@ -15,12 +15,14 @@
         <%= stylesheet_link_tag    'http://fonts.googleapis.com/css?family=PT+Sans:400,700', media: 'all' %>
         
         <%= stylesheet_link_tag    "bootstrap.css" %>
-        
+        <%= stylesheet_link_tag    "all.css" %>
         <%= stylesheet_link_tag    "font-awesome.css" %>
         <%= stylesheet_link_tag    "social-icons.css" %>
-        <%= stylesheet_link_tag    "style.css" %>
+        <%= stylesheet_link_tag    "app.css" %>
         <%= stylesheet_link_tag    "font-awesome.min.css" %>
         <%= stylesheet_link_tag    "coming-soon-style.css" %>
+        <%= stylesheet_link_tag    "skin-blue.css" %>
+        <%= stylesheet_link_tag    "theme.css" %>
         <!-- Javascript -->
         
         <%= javascript_include_tag 'jquery-1.11.3.min.js' %>
@@ -90,12 +92,24 @@
             <li><%=link_to("HOME", :controller=> "landing_page")%></a></li>
             <li class="active"><%=link_to("EVENTS", :controller=> "events")%></li>
            </ul>
-           <div class="sign-in">
+           <div >
            <ul class="nav navbar-nav navbar-right"> 
             <li><div>
   <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" , class: "sign-out btn btn-primary btn-lg"%>
+    
+  <ul class="nav navbar-nav navbar-user">
+            <!-- User -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                 <%= current_user.name %><span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="messages.html">Messages</a></li>
+                <li><a href="login.html"><%= link_to "Sign out", signout_path, id: "sign_out" %></a></li>
+              </ul>
+            </li>
+          </ul>
   <% else %>
   <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" , class: "btn btn-facebook"%>
     

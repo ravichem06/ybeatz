@@ -102,7 +102,7 @@
     Signed in as <strong><%= current_user.name %></strong>!
     <%= link_to "Sign out", signout_path, id: "sign_out" , class: "sign-out btn btn-primary btn-lg"%>
   <% else %>
-  <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" , class: "btn btn-facebook"%>
+  <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-facebook"%>
     
   <% end %>
   </div>

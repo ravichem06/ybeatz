@@ -32,7 +32,7 @@ class EventsController < ApplicationController
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
@@ -70,6 +70,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params[:event]
+      params[:event].permit(:event_name, :date, :place)
     end
 end
