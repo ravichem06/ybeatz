@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Rails ybeatz: development" uuid="c46f5af1-4e3b-48e8-8711-8fe83b888c9c">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails ybeatz: production" uuid="6a7063cb-0c94-4b0c-a570-9e029409aeff">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails ybeatz: test" uuid="0d9aa005-ca5a-402d-b6e2-b4167add0bd8">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>

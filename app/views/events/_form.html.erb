@@ -5,6 +5,8 @@
 <%= f.input :event_name, :required => true, placeholder: 'Event Name'  %>
 <%= f.input :date, as: :date,
            order: [:day, :month], :required => true  %>
+<%= f.input :day_date, :collection => ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %>
+<%= f.input :description, :as => :text, :required => true, placeholder: 'Event Name'  %>
 <%= f.input :place, :required => true, placeholder: 'Event Location' %>
   </div>
 

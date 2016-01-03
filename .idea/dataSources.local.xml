@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails ybeatz: development" uuid="c46f5af1-4e3b-48e8-8711-8fe83b888c9c">
+      <first-sync>true</first-sync>
+      <user-name>root</user-name>
+      <user-password>dfd8dfc5dfc5dfde</user-password>
+    </data-source>
+    <data-source name="Rails ybeatz: production" uuid="6a7063cb-0c94-4b0c-a570-9e029409aeff">
+      <user-name>prototype</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddffadff8dfe5dffedfe5dffedff3dffadfefdff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+    </data-source>
+    <data-source name="Rails ybeatz: test" uuid="0d9aa005-ca5a-402d-b6e2-b4167add0bd8">
+      <user-name>ravi</user-name>
+      <user-password>dfd8dfcbdfdcdfc3df9bdf93df93df9b</user-password>
+    </data-source>
+  </component>
+</project>

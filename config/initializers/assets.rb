@@ -24,6 +24,12 @@ Rails.application.config.assets.precompile += %w( all.css )
 Rails.application.config.assets.precompile += %w( app.css )
 Rails.application.config.assets.precompile += %w( skin-blue.css )
 Rails.application.config.assets.precompile += %w( theme.css )
+Rails.application.config.assets.precompile += %w( main.css )
+Rails.application.config.assets.precompile += %w( events.js )
+Rails.application.config.assets.precompile += %w( jquery.mobile.customized.min.js )
+Rails.application.config.assets.precompile += %w( jquery.easing.1.3.js )
+Rails.application.config.assets.precompile += %w( camera.js )
+Rails.application.config.assets.precompile += %w( camera.css )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 
