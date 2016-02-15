@@ -42,7 +42,7 @@
 							</ul>
 						</div> -->
 
-						<div class="camera_wrap camera_magenta_skin" id="camera_wrap_1">
+						<!-- <div class="camera_wrap camera_magenta_skin" id="camera_wrap_1">
             <div data-thumb="https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/backgrounds/first.jpeg" data-src="https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/backgrounds/first.jpeg">
                 
             </div>
@@ -55,7 +55,9 @@
             <div data-thumb="https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/backgrounds/fourth.jpeg" data-src="https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/backgrounds/fourth.jpeg">
                 
             </div>
-            <div data-thumb="https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/backgrounds/fifth.jpeg" data-src="https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/backgrounds/fifth.jpeg">
+            <div data-thumb="https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/backgrounds/fifth.jpeg" data-src="https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/backgrounds/fifth.jpeg"> -->
+
+            <%= image_tag @event.banner.url(:large)%>
                         
         </div><!-- #camera_wrap_2 -->
 </div>
@@ -124,7 +126,7 @@
 						</div>
 						<h3><a href="#"><% @event.event_name %></a></h3>
 						<div class="event-location">
-							<span class="location"><i class="fa fa-map-marker"></i> <% @event.place %></span>
+							<span class="location"><i class="fa fa-map-marker"></i> <% @event.country %></span>
 							<span class="time"><i class="fa fa-clock-o"></i> 10:28 pm - 06:00 am</span>
 						</div>
 						<p>
@@ -145,7 +147,7 @@
 						</div>
 						<h3><a href="#"><% @event.event_name %></a></h3>
 						<div class="event-location">
-							<span class="location"><i class="fa fa-map-marker"></i> <% @event.place %></span>
+							<span class="location"><i class="fa fa-map-marker"></i> <% @event.country %></span>
 							<span class="time"><i class="fa fa-clock-o"></i> 10:28 pm - 06:00 am</span>
 						</div>
 						<p>
@@ -165,7 +167,7 @@
 						</div>
 						<h3><a href="#"><% @event.event_name %></a></h3>
 						<div class="event-location">
-							<span class="location"><i class="fa fa-map-marker"></i> <% @event.place %></span>
+							<span class="location"><i class="fa fa-map-marker"></i> <% @event.country %></span>
 							<span class="time"><i class="fa fa-clock-o"></i> 10:28 pm - 06:00 am</span>
 						</div>
 						<p>

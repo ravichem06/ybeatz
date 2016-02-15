@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151225095053) do
+ActiveRecord::Schema.define(version: 20160118171141) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -22,13 +22,23 @@ ActiveRecord::Schema.define(version: 20151225095053) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string   "event_name",  limit: 255
+    t.string   "event_name",          limit: 255
     t.datetime "date"
-    t.string   "place",       limit: 255
-    t.string   "day_date",    limit: 255
-    t.string   "description", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "city",                limit: 255
+    t.string   "day_date",            limit: 255
+    t.string   "description",         limit: 255
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "country",             limit: 25
+    t.string   "state",               limit: 25
+    t.string   "venue",               limit: 25
+    t.string   "banner_file_name",    limit: 255
+    t.string   "banner_content_type", limit: 255
+    t.integer  "banner_file_size",    limit: 4
+    t.datetime "banner_updated_at"
+    t.string   "tagline",             limit: 255
+    t.datetime "doors_open"
+    t.integer  "ticket_price",        limit: 4
   end
 
   create_table "subscribers", force: :cascade do |t|

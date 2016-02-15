@@ -14,7 +14,7 @@
         <!-- CSS -->
         <%= stylesheet_link_tag    'http://fonts.googleapis.com/css?family=PT+Sans:400,700', media: 'all' %>
         
-        <%= stylesheet_link_tag    "bootstrap.css" %>
+        <%= stylesheet_link_tag    "bootstrap.min.css" %>
         
         <%= stylesheet_link_tag    "font-awesome.css" %>
         <%= stylesheet_link_tag    "social-icons.css" %>
@@ -61,6 +61,25 @@
     </head>
 
     <body>
+    <!-- facebook SDK starts here-->
+    <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1627308574197447',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<!-- facebook SDK ends here-->
     <span class="error_msgs">
     <% if !flash[:error].blank? %>
         <div class="error" id="error">

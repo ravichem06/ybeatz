@@ -336,6 +336,19 @@ main h2 {
   padding: 90px 0 75px;
 }
 
+.event-box{
+	background-color: #FBFBFB;
+    width: 90%;
+    padding: 14px;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.container p {
+	margin-bottom: 3px;
+}
+
 .event {
 	margin-bottom: 30px;
 }
