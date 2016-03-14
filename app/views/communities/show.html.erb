@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>name:</strong>
+  <%= @community.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @community.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @community.content %>
+</p>
+
+<%= link_to 'Edit', edit_community_path(@community) %> |
+<%= link_to 'Back', communities_path %>

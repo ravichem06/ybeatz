@@ -1,0 +1,67 @@
+
+/*Community Stylesheet*/
+
+
+.posts-col {
+
+	width: 95%;
+	margin: 10px;
+	padding-left: 45px;
+}
+.posts {
+	float:	left;
+	margin: 15px;
+	padding: 8px;
+	width: 30%;
+	height: auto;
+
+	background-color: white;
+}
+.posts .posts-image {
+
+	
+	height:40%;
+	max-height: 200px;
+	overflow: hidden;
+	position: relative;
+}
+
+.posts .posts-image img {
+	width: 100%;
+	margin: 5px;
+}
+
+@media (min-width: 768px) {
+	#upcoming-events.list-style .posts-image {
+		float:left;
+		width: 270px;
+		margin-right: 30px;
+	}
+.posts .posts-date {
+	position: absolute;
+	left:0;
+	bottom: 0;
+	background: #f04933;
+	color:white;
+	font-family: 'calibri light';
+	padding: 7px 8px 9px;
+	
+	
+	margin: 5px;
+}
+
+.posts .posts-date .title {
+	font-size: 36px;
+	line-height: 36px;
+	display: block;
+	font-weight: 600; /* Semi bold */
+	margin-bottom: 2px;
+	text-align: left;
+}
+
+.posts .posts-date .author {
+	font-size: 16px;
+	line-height: 18px;
+	text-transform: capitalize;
+	display: block;
+}
