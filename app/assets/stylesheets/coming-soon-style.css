@@ -8,6 +8,44 @@
  *
  */
 
+/*Footer*/
+
+.subscribe-row{
+
+  height: 100px;
+  background-color: #5D5C5C;
+  color: #FFFEFE;
+  padding: 15px 45px 0 65px;
+  font-size: 20px;
+  font-family: 'Calibri light', Helvetica, Arial, sans-serif;
+
+}
+
+.bottom-menu{
+  float: right;
+  
+}
+
+a.bottom-menu{
+  color: #FFFEFE;  
+}
+
+a.bottom-menu:hover{
+  color: #CACACA;
+  text-decoration: none;  
+}
+
+.copyright-menu{
+
+  height: 56px;
+  background-color: #212121;
+  color: #FFFEFE;
+  padding: 15px 45px 0 65px;
+
+}
+
+/*.....................................................................*/
+
 
 body {
     background: #f8f8f8 url(https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/pattern.jpg);
@@ -363,11 +401,13 @@ a:hover { text-decoration: none; }
 }*/
 
 .logo a {
+    <position: absolute;
     display: inline-block;
     width: 160px;
-    height: 38px;
-    margin-top: 10px;
-    background: url(https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/logo.png) left top no-repeat;*/
+    height: 40px;
+    margin-top: -10px;
+    padding-left: 0px;
+    /*background: url(https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/android-icon-72x72.png) left top no-repeat;*/*/
     color: #555;
     text-indent: -9999px;
     text-decoration: none;
@@ -375,6 +415,7 @@ a:hover { text-decoration: none; }
     -moz-transition: all .2s;
     -webkit-transition: all .2s;
     -ms-transition: all .2s;
+    
 }
 .logo a:hover { color: #518d8a; }
 
@@ -396,8 +437,16 @@ a:hover { text-decoration: none; }
 
 .sign-out{
 
+    /*padding: 7px 16px;*/
+    font-size: 15px;
+    color: #fff;
+}
+
+.sign-out-home{
+
     padding: 7px 16px;
     font-size: 15px;
+    color: #fff;
 }
 .tel-skype .pipe { margin: 0 7px 0 5px; color: #ccc; }
 
@@ -883,9 +932,12 @@ footer a:hover { color: #aaa; }
 .contact-us form input::-webkit-input-placeholder { color: #aaa; }
 
 .social-links {
-    margin: 40px 50px 0 50px;
-    padding-top: 40px;
-    border-top: 1px dotted #4d4d4d;
+    margin: 0px 50px 0 50px;
+    font-family: 'Calibri light', Helvetica, Arial, sans-serif;
+    color: #B7B7B7;
+    font-size: 36px;
+
+    
     text-align: center;
 }
 

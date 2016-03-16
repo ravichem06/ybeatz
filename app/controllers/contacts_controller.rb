@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-layout false
+layout 'common'
   def new
     @contact = Contact.new
   end
@@ -14,7 +14,7 @@ layout false
       redirect_to(:controller=> 'landing_page',:action => 'index')
     else
       flash.now[:error] = 'Cannot send message.'
-      render layout: "landing_page", file: "landing_page/index"
+      render layout: "common", file: "contacts/new"
     end
   end
 

@@ -31,6 +31,7 @@ Rails.application.config.assets.precompile += %w( jquery.easing.1.3.js )
 Rails.application.config.assets.precompile += %w( camera.js )
 Rails.application.config.assets.precompile += %w( camera.css )
 Rails.application.config.assets.precompile += %w( community.css )
+Rails.application.config.assets.precompile += %w( logo2.png )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 
