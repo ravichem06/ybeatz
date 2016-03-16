@@ -1,7 +1,7 @@
 class CommunitiesController < ApplicationController
   before_action :set_community, only: [:show, :edit, :update, :destroy]
   layout "community"
-
+  before_filter :authenticate_member!
   # GET /communities
   # GET /communities.json
   def index

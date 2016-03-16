@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  
+  devise_for :members
   resources :communities
   resources :blogs
     get 'auth/:provider/callback', to: 'sessions#create'
@@ -21,6 +23,11 @@ Rails.application.routes.draw do
   resources "contacts", only: [:new, :create]
   resources :subscribers, only: [:index, :create]
   match ':controller(/:action(/:id))', :via => [:get, :post]
+
+  devise_scope :member do 
+    
+    match '/sessions/member', to: 'devise/sessions#create', via: :post
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

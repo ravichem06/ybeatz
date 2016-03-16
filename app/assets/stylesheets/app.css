@@ -143,7 +143,7 @@
 }
 body.login {
   position: initial;
-  background: url('../../images/lock-1.jpg');
+  background: url('lock-1.jpg');
   padding-top: 0;
 }
 body.login #content {

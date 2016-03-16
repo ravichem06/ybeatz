@@ -62,42 +62,9 @@
 
     <body>
     <!-- facebook SDK starts here-->
-    <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1627308574197447',
-      xfbml      : true,
-      version    : 'v2.5'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
+    
 <!-- facebook SDK ends here-->
-    <span class="error_msgs">
-    <% if !flash[:error].blank? %>
-        <div class="error" id="error">
-          <img src="https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/alerts/error.png" width = "20" height="20">&nbsp<%= flash[:error] %>
-        </div>
-         <% end %>
-        </span>
-     
-      <span class="error_msgs">
-      <% if !flash[:notice].blank? %>
-        <div class="notice" id="notice">
-          <img src="https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/alerts/success.png" width = "24" height="24">&nbsp<%= flash[:notice] %>
-        </div>
-      <% end %>
-      </span>
-      <script>
-    setTimeout("$('.error_msgs').fadeOut('slow')", 5000)
-  </script>
+   
   <style>
     
     a {
@@ -140,39 +107,50 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li><%=link_to("HOME", :controller=> "landing_page")%></a></li>
+            <li><%=link_to("HOME", :controller=> "landing_page")%></li>
             <li class="active"><%=link_to("EVENTS", :controller=> "events")%></li>
+            <li><%=link_to("COMMUNITY", :controller=> "communities")%></li>
            </ul>
            <div >
            <ul class="nav navbar-nav navbar-right"> 
             <li><div>
-  <% if current_user %>
+
+
+
+ 
+
+
+
+
+  <% if member_signed_in? %>
     
   <ul class="nav navbar-nav navbar-user">
             <!-- User -->
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                 <%= current_user.name %><span class="caret"></span>
+                 <%=current_member.name%> <%=current_member.surname%><span class="caret"></span>
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="profile.html">Profile</a></li>
                 <li><a href="messages.html">Messages</a></li>
-                <li><a href="login.html"><%= link_to "Sign out", signout_path, id: "sign_out" %></a></li>
+                <li><%= link_to('Sign Out', destroy_member_session_path, :method => :delete)%></li>
               </ul>
             </li>
           </ul>
   <% else %>
-  <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" , class: "btn btn-facebook"%>
+     <li><%=link_to "Log In", new_member_session_path %></li>
+            <li><%=link_to 'Sign Up', new_member_registration_path %></li>
+            <%end%>
     
-  <% end %>
+  
   </div>
-</li>           
+          
             
           </ul></div>
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
+<%= render 'shared/notification' %>
 
 
             <%= yield %> 

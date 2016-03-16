@@ -31,6 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rmagick', '~> 2.15.4'
 gem 'gibbon'
 gem 'omniauth-facebook'
+gem 'devise'
 #gem 'mailchimp-api'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

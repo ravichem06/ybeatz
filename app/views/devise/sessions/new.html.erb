@@ -1,0 +1,40 @@
+<title>YBeatz | Log In</title>
+
+<body class="login">
+
+  <div id="content">
+    <div class="container-fluid">
+
+      <div class="lock-container">
+        <h1>Log in</h1>
+        <div class="panel panel-default text-center">
+          
+          <div class="panel-body">
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  
+    		<%= f.input :email, required: false, autofocus: true %>
+   			<%= f.input :password, required: false %>
+    		<%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  
+    		<%= f.button :submit, "Log in" , :class	=> "btn btn-primary"%>
+  
+			<% end %>
+
+            <%= render "devise/shared/links" %>
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <strong>YBeatz</strong> &copy; Copyright 2015
+  </footer>
+  
+</body>
+
+
+

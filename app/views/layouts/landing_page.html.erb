@@ -21,6 +21,7 @@
         <%= stylesheet_link_tag    "coming-soon-style.css" %>
         <%= stylesheet_link_tag    "style.css" %>
         <%= stylesheet_link_tag    "font-awesome.min.css" %>
+
         <!-- Javascript -->
         
         <%= javascript_include_tag 'jquery-1.11.3.min.js' %>
@@ -28,7 +29,7 @@
         <%= javascript_include_tag 'jquery.tweet.js' %>
         <%= javascript_include_tag 'jflickrfeed.js' %>
         <%= javascript_include_tag 'coming-soon-scripts.js' %>
-		    <%= javascript_include_tag 'bootstrap.min.js' %>
+		<%= javascript_include_tag 'bootstrap.min.js' %>
         <%= javascript_include_tag 'modernizr-2.6.2.min.js' %>
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -58,105 +59,7 @@
 
     <body>
     <!-- facebook SDK starts here-->
-    <script>
-   // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
-    }
-  }
-
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '{1627308574197447}',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.2' // use version 2.2
-  });
-
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-
-  };
-
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
-  }
-</script>
-<!-- facebook SDK ends here-->
-    <span class="error_msgs">
-    <% if !flash[:error].blank? %>
-        <div class="error" id="error">
-          <img src="https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/alerts/error.png" width = "20" height="20">&nbsp<%= flash[:error] %>
-        </div>
-         <% end %>
-        </span>
-     
-      <span class="error_msgs">
-      <% if !flash[:notice].blank? %>
-        <div class="notice" id="notice">
-          <img src="https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/alerts/success.png" width = "24" height="24">&nbsp<%= flash[:notice] %>
-        </div>
-      <% end %>
-      </span>
-      <script>
-    setTimeout("$('.error_msgs').fadeOut('slow')", 5000)
-  </script>
+    
   
         <!-- Header -->
       
@@ -178,28 +81,33 @@
             <li><%=link_to("EVENTS", :controller=> "events")%></li>
             <li><%=link_to("COMMUNITY", :controller=> "communities")%></li>
            </ul>
-           <div class="sign-in">
-           <ul class="nav navbar-nav navbar-right"> 
-            <li><div>
-  <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" , class: "sign-out btn btn-primary btn-lg"%>
-  <% else %>
-  <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-facebook"%>
-    
-  <% end %>
-  </div>
-</li>
-            
+           
+                   
            
 
 
             
             
-          </ul></div>
+          
+          <ul class="nav navbar-nav navbar-right"> 
+           <% if member_signed_in? %>
+            <div class="sign-out">
+            <li>Signed in as <%=current_member.name%> <%=current_member.surname%> | <%= link_to('Sign Out', destroy_member_session_path, :method => :delete, :class => "btn btn-primary") %></li>
+            </div>
+            <%else%>
+
+           
+            <li><%=link_to "Log In", new_member_session_path %></li>
+            <li><%=link_to 'Sign Up', new_member_registration_path %></li>
+            <%end%>
+
+            
+            
+          </ul>
         </div> 
        </div> 
     </div>
+<%= render 'shared/notification' %>
 
 
         	<!--sign up form end-->
