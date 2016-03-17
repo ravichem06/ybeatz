@@ -8,18 +8,58 @@
  *
  */
 
+/*Subscribe form*/
+
+.subscribe-input{
+
+width: 30%;
+border: none;
+border-width: 2px;
+background-color: #484747;
+
+border-radius: 2px;
+padding: 8px;
+padding-left: 12px;
+font-family: 'Calibri light', Helvetica, Arial, sans-serif;
+}
+
+.subscribe-input:focus{
+background-color: transparent;
+font-family: 'Calibri light', Helvetica, Arial, sans-serif;
+border-color: white;
+}
+
+
+.subscribe-submit{
+color: white;
+width: 25%;
+background-color: #238E44;
+border-radius: 2px;
+border: none;
+padding: 8px;
+}
+
+
+
+.subscribe-submit:hover{
+
+background-color: #1A6732;
+
+}
 /*Footer*/
 
 .subscribe-row{
 
-  height: 100px;
+  height: 120px;
   background-color: #5D5C5C;
   color: #FFFEFE;
-  padding: 15px 45px 0 65px;
+  padding: 20px 45px 0 65px;
   font-size: 20px;
   font-family: 'Calibri light', Helvetica, Arial, sans-serif;
 
 }
+
+
 
 .bottom-menu{
   float: right;

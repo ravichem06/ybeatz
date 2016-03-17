@@ -1,8 +1,16 @@
 <div class="subscribe-row">
 
-<div>Subscribe to our Newsletter</div>
+<div style="
+    padding-bottom: 7px;">Subscribe to our Newsletter</div>
 
-<form class="form-inline">
+<%= form_for :subscriber, :url=> {:controller =>'landing_page', :action => 'create'} do |f| %>
+    <%= f.text_field :name, :placeholder=> 'Your Name...', :required => true , :label => false, :class=> "subscribe-input"%>
+    <%= f.email_field :email, :placeholder=> 'Your Email...', :required => true , :label => false, :class=> "subscribe-input"%>
+ <%= f.submit 'Subscribe', :class=> "subscribe-submit" %>
+
+ <% end %>
+
+<!-- <form class="form-inline">
   <div class="form-group">
     <label class="sr-only" for="exampleInputEmail3">Name</label>
     <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Your Name...">
@@ -13,7 +21,7 @@
   </div>
   
   <button type="submit" class="btn btn-success">Subscribe</button>
-</form>
+</form> -->
 
 
 </div>

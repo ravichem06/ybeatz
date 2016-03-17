@@ -4,19 +4,35 @@
           <%= flash[:notice] %>
         </div>
       <% end %>
+<div class="heading">
+  <h1><strong>Contact Us</strong></h1>
+</div>
+<div class="note">
+  Send us a note. We will be quick to get in <br/>touch with you.
+</div>
 
-  <h1>Contact</h1>
 
-  <%= simple_form_for @contact, :url=> {:controller =>'contacts',:action => 'new'}, :html => {:class => 'form-horizontal' } do |f| %>
-    <%= f.input :name, :required => true %>
-    <%= f.input :email, :required => true %>
-    <%= f.input :message, :as => :text %>
+
+  <div class="contact-form ">
+
+  <%= simple_form_for @contact, :url=> {:controller =>'contacts',:action => 'new'}, :html => {:class => 'form-horizontal ' } do |f| %>
+    <%= f.label :name %><br/>
+    <%= f.input_field :name,  :required => true , :class => "contact-input"%>
+    <%= f.label :email %><br/>
+    <%= f.input_field :email, :required => true, :class => "contact-input" %>
+    <%= f.label :subject %>
+    <%= f.input_field :subject,  :required => true, :class => "contact-input" %>
+    <%= f.label :message %>
+    <%= f.input_field :message, :class => "contact-input", :as => :text, :rows => 8 %>
     <div class= "hidden">
-      <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+      <%= f.input_field :nickname, :hint => 'Leave this field blank!' %>
     </div>
+
+    
     
       </br>
       <div>
-      <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
+      <%= f.submit 'Send', :class=> "contact-send" %>
     </div>  
   <% end %>
+</div>

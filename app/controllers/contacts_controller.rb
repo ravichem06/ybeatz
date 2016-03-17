@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
 layout 'common'
+
   def new
     @contact = Contact.new
   end
@@ -22,6 +23,6 @@ layout 'common'
       # same as using "params[:subject]", except that it:
       # - raises an error if :subject is not present
       # - allows listed attributes to be mass-assigned
-      params.require(:contact).permit(:email, :name, :message)
+      params.require(:contact).permit(:email, :name, :message, :subject)
     end
 end
