@@ -5815,7 +5815,7 @@ a.list-group-item-danger.active:focus {
   filter: alpha(opacity=50);
 }
 button.close {
-  padding: 0;
+  padding-bottom: 5px;
   cursor: pointer;
   background: transparent;
   border: 0;

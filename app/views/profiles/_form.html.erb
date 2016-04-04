@@ -1,0 +1,36 @@
+
+  <%= f.error_notification %>
+
+
+  <p> Overview</p>
+<div class="profile-box ">
+<%= f.input :short_description, :label => "Describe yourself in one line..."  %>
+<%= f.input :about, as: :text, :label => "Tell us something about yourself..." %>
+<%= f.input  :gender, :collection => ['Male' ,'Female'] %>
+
+</div>
+
+<p> You date of birth</p>
+  <div class="profile-box ">
+  
+  <%= f.input :DOB, as: :date,
+           order: [:day, :month, :year], :label => false  %>
+ 
+ </div>
+<p> Where are you currently located?</p>
+<div class="profile-box">
+<%= f.input :country %>
+<%= f.input :state %>
+<%= f.input :city %>
+
+  </div>
+
+  <p> Social Information</p>
+  
+  <div class="profile-box">`
+  <%= f.input :facebook_link, :label => "Your facebook ID" %>
+  <%= f.input :twitter_link, :label => "Your twitter ID"%>
+  <%= f.input :linkedin_link, :label => "Your linkedin ID"%>
+
+  </div>
+  

@@ -1,0 +1,46 @@
+<div class="media-left">
+
+                <div class="width-250 width-auto-xs">
+                  <div class="panel panel-default widget-user-1 text-center">
+                    <div class="avatar">
+                      <%= image_tag @member.avatar.url(:medium), :class	=> "img-circle" %>
+                      <h3><%= @member.name%> <%= @member.surname %></h3>
+                      <!-- <a href="#" class="btn btn-success">Following <i class="fa fa-check-circle fa-fw"></i></a> -->
+                    </div>
+                    <div class="profile-icons margin-none">
+                      <span><i class="fa fa-clone"></i> <%= @member.communities.count %></span>
+                      <!-- <span><i class="fa fa-photo"></i> 43</span>
+                      <span><i class="fa fa-video-camera"></i> 3</span> -->
+                    </div>
+                  </div>
+
+                  <!-- Contact -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      Contact
+                    
+                    </div>
+                    <ul class="icon-list icon-list-block">
+                      <li><i class="fa fa-envelope fa-fw"></i> <%= @member.email %></li>
+                      <li><i class="fa fa-facebook fa-fw"></i> <%= @member.profile.facebook_link %></li>
+                      <li><i class="fa fa-twitter fa-fw"></i> <%= @member.profile.twitter_link %></li>
+                      <li><i class="fa fa-linkedin fa-fw"></i> <%= @member.profile.linkedin_link %></li>
+                    </ul>
+                  </div>
+                      <% if member_signed_in? %>
+                        <% if @member.id == current_member.id %>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            Personal Profile
+                            
+                          </div>
+                          <ul class="icon-list icon-list-block">
+                            <li><%= link_to 'Details about you', profile_path(current_member.id), :member_id => current_member.id %></li>
+                            <li><%= link_to 'Change Password', edit_member_registration_path %></li>
+                          </ul>
+                        </div>
+                        <% end %>
+                      <% end %>
+
+                </div>
+              </div>

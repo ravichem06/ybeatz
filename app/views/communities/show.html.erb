@@ -1,19 +1,177 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>name:</strong>
-  <%= @community.name %>
-</p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @community.title %>
-</p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @community.content %>
-</p>
+    <div class="container">
 
-<%= link_to 'Edit', edit_community_path(@community) %> |
-<%= link_to 'Back', communities_path %>
+        <div class="row ">			
+
+                <div class="col-lg-12 header">
+                
+                	<div class="row">			
+                  	<div class="col-xs-9 col-sm-9">  
+                    	<h1><%= @community.title %>  </h1>
+                		</div>        
+                    
+                		<div class="col-xs-9 col-sm-3 edit-button">
+                  
+                    <% if member_signed_in? %>
+                    	<% if @community.member_id == current_member.id %>
+                    	<%= link_to 'Edit', edit_community_path(@community), :class	=> "btn btn-primary"%>
+                    	<% else %>
+    										
+    					<% end %>
+                    <% end %>
+    								
+                  	</div>  
+                
+
+                  </div>
+                </div>  	
+           
+            </div>
+            <div class="row">
+
+                <div class="col-lg-8">
+
+                    <!-- the actual blog post: title/author/date/content -->
+                    <div class="author-details">
+                    <div class="col-md-2">
+                    <%= image_tag @community.member.avatar.url(:thumb), :style => "width: 50px; height: 50px;"%></div>
+                    <div class="col-md-10">
+                    <p><i class="fa fa-user"></i> <strong><%=link_to @community.name,member_path(@community.member_id) %></strong><br/><i class="fa fa-clock-o"></i> <%= @community.created_at.strftime("%-d %^B, %Y at %H:%M") %> 
+                    </p>
+                    </div>
+                    </div>
+                    <% if @community.post_image?%>
+                       <div class="post-image">                     
+                        <%= image_tag @community.post_image.url(:large) %>
+                        <%else%>
+                        <%= image_tag 'banner.jpg', class: "event-banner" %>
+                        <% end%>
+                       </div>
+                    <hr>
+                    <p class="lead">Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
+                    <p>You know, being a test pilot isn't always the healthiest business in the world.</p>
+                    <p>Cookie jelly beans soufflé icing. Gummi bears tootsie roll powder chupa chups cheesecake chocolate jelly-o lollipop lollipop. Halvah applicake chupa chups. Marshmallow chocolate jujubes icing lollipop gummi bears chupa chups pudding bonbon. Jelly beans jelly soufflé jujubes. Sesame snaps lollipop icing donut lemon drops soufflé.</p>
+                    <p>Donut caramels gingerbread. Sweet roll macaroon pastry cotton candy oat cake sesame snaps biscuit lemon drops dessert. Candy canes carrot cake danish carrot cake soufflé jelly chocolate cake muffin. Topping brownie donut. Oat cake marzipan dragée cheesecake. Donut chocolate cake jujubes tart dragée toffee.</p>
+                    <p>Tilefish electric knifefish salmon shark southern Dolly Varden. Pacific argentine tope golden shiner ilisha barreleye loosejaw catla, dogteeth tetra catfish tenpounder nase scup Ragfish brotula." Codlet brook lamprey pleco, Japanese eel convict cichlid titan triggerfish, plownose chimaera topminnow Black scalyfin. Walleye pollock, blue shark Sacramento blackfish prickleback airbreathing catfish yellowfin cutthroat trout, goby southern sandfish. North Pacific daggertooth dorab cepalin weever flying gurnard.</p>
+                    <p><strong>Placeholder text by:</strong>
+                    </p>
+                    <ul>
+                        <li><a href="http://spaceipsum.com/">Space Ipsum</a>
+                        </li>
+                        <li><a href="http://cupcakeipsum.com/">Cupcake Ipsum</a>
+                        </li>
+                        <li><a href="http://tunaipsum.com/">Tuna Ipsum</a>
+                        </li>
+                    </ul>
+                    <br/>
+                    
+
+                    <br/>
+                    
+
+                        
+                            <%if @community.comments.empty? %>
+                                
+                            <% else %>  
+                            <h2><%= @community.comments.count %> Comments</h2>
+
+                                <% @community.comments.each do |comment| %>
+                                <div class="row comments-view" >
+                                  <div class="col-xs-2">
+                                      
+                                          <% if member_signed_in? %>
+                                          <%= image_tag comment.member.avatar.url(:thumb), :style => "width: 60px; height: 50px;"  %>
+                                          <% else %>
+                                          <%= image_tag "avatar/missing.jpg", :style => "width: 60px; height: 50px;" %>
+                                          <% end %>
+                                      
+                                  </div>
+                                  <div class="col-xs-10">
+                                      <div class="comment-header">
+                                        <h3><%= comment.commenter.capitalize %></h3> 
+                                        <div class="comment-time">
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= comment.created_at.strftime("%-d %^B, %Y at %H:%M") %>
+                                        </div>
+                                      </div>
+                                    <%= comment.content %>
+                                    <br/>
+                                  </div>  
+                                    
+                                  
+                                </div>
+                                <% end %>
+                                
+                            <% end %>
+                        
+
+                                    
+                </div>
+
+
+
+                <!-- Side bar starts here -->
+
+                <div class="col-lg-4 ">
+                	<div class="right-sidebar">
+                        <div class="popular-latest">
+    			        	<!-- <ul class="nav nav-tabs nav-justified">
+    							    <li class="active"><a href="#tab1" data-toggle="tab">Latest</a></li>
+    							    <li><a href="#tab2" data-toggle="tab">Popular</a></li>
+    							  </ul>
+    							  <div class="tab-content">
+    							    <div class="tab-pane active" id="tab1"> -->
+                                    <h3>Latest</h3>
+    							    <% @communities.each do |community| %>
+
+    							      <div class="row">
+
+    						           <div class="col-xs-4">
+    						           	<div class="sidebar-image" style="margin: 15px;">
+    						                
+    						                <%= image_tag community.post_image.url(:thumb) %>
+    						                </div>
+    						            </div>
+    						            <div class="col-xs-8">
+    						                <h4><%=link_to community.title, :action=> :show, :id => community.id %>
+    						                </h4>
+    						                <p>by <%= community.name %>
+    						                </p>
+    						            </div>
+
+    						        </div>
+
+    						        <hr>
+    						        <% end %>
+                                    </div>
+
+    						        <div class="social-links-side">
+    						        <h3>Follow us</h3> 
+    						        <%= image_tag "facebook1.png",  class: "social-share", :style => "width: 55px;"%>
+    						        <%= image_tag "linkedin1.png",  class: "social-share", :style => "width: 55px;" %>
+    						        <%= image_tag "google1.png",  class: "social-share" , :style => "width: 55px;"%>
+    						        <%= image_tag "youtube1.png",  class: "social-share", :style => "width: 55px;" %>
+    						        <%= image_tag "twitter1.png",  class: "social-share", :style => "width: 55px;" %>
+
+    						        </div>
+    							    </div>
+    							    <!-- <div class="tab-pane" id="tab2">
+    							      <p>Howdy, I'm in Section 2.</p>
+    							    </div> -->
+    							  <!-- </div>
+    							</div> -->
+
+            		</div>
+
+            		<!-- Side bar ends here -->
+
+
+        </div> <!-- row ends here -->
+<br/>
+
+        <%= render "comments/comment" %>
+
+
+    </div>
+

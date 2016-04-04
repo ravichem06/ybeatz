@@ -11,7 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317150817) do
+ActiveRecord::Schema.define(version: 20160331082905) do
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",    limit: 255, null: false
+    t.string   "data_content_type", limit: 255
+    t.integer  "data_file_size",    limit: 4
+    t.integer  "assetable_id",      limit: 4
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width",             limit: 4
+    t.integer  "height",            limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content",      limit: 65535
+    t.integer  "community_id", limit: 4
+    t.integer  "member_id",    limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "commenter",    limit: 255
+    t.string   "email",        limit: 255
+  end
+
+  add_index "comments", ["community_id"], name: "index_comments_on_community_id", using: :btree
+  add_index "comments", ["member_id"], name: "index_comments_on_member_id", using: :btree
 
   create_table "communities", force: :cascade do |t|
     t.string   "name",                    limit: 255
@@ -23,7 +52,10 @@ ActiveRecord::Schema.define(version: 20160317150817) do
     t.string   "post_image_content_type", limit: 255
     t.integer  "post_image_file_size",    limit: 4
     t.datetime "post_image_updated_at"
+    t.integer  "member_id",               limit: 4
   end
+
+  add_index "communities", ["member_id"], name: "index_communities_on_member_id", using: :btree
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -68,10 +100,33 @@ ActiveRecord::Schema.define(version: 20160317150817) do
     t.datetime "updated_at",                                      null: false
     t.string   "name",                   limit: 255
     t.string   "surname",                limit: 255
+    t.integer  "role",                   limit: 4
+    t.string   "avatar_file_name",       limit: 255
+    t.string   "avatar_content_type",    limit: 255
+    t.integer  "avatar_file_size",       limit: 4
+    t.datetime "avatar_updated_at"
   end
 
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "member_id",         limit: 4
+    t.string   "short_description", limit: 255
+    t.string   "about",             limit: 255
+    t.string   "facebook_link",     limit: 255
+    t.string   "twitter_link",      limit: 255
+    t.string   "linkedin_link",     limit: 255
+    t.datetime "DOB"
+    t.string   "country",           limit: 255
+    t.string   "state",             limit: 255
+    t.string   "city",              limit: 255
+    t.string   "gender",            limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "profiles", ["member_id"], name: "index_profiles_on_member_id", using: :btree
 
   create_table "subscribers", force: :cascade do |t|
     t.string   "email",      limit: 255
@@ -103,4 +158,7 @@ ActiveRecord::Schema.define(version: 20160317150817) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "comments", "communities"
+  add_foreign_key "comments", "members"
+  add_foreign_key "profiles", "members"
 end

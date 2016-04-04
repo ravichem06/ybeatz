@@ -1,21 +1,25 @@
 class CommunitiesController < ApplicationController
   before_action :set_community, only: [:show, :edit, :update, :destroy]
   layout "community"
-  before_filter :authenticate_member!
+  before_filter :authenticate_member!, except: [:index, :show]
+  require 'will_paginate/array'
+
   # GET /communities
   # GET /communities.json
   def index
-    @communities = Community.all
+    @communities = Community.newest_first.paginate(page: params[:page], per_page: 9)
   end
 
   # GET /communities/1
   # GET /communities/1.json
   def show
+@communities = Community.newest_first.paginate(page: params[:page], per_page: 5).where('id NOT IN (?)', @community.id)
+
   end
 
   # GET /communities/new
   def new
-    @community = Community.new
+    @community = Community.new({:member_id => current_member.id})
   end
 
   # GET /communities/1/edit
@@ -29,7 +33,7 @@ class CommunitiesController < ApplicationController
 
     respond_to do |format|
       if @community.save
-        format.html { redirect_to @community, notice: 'Community was successfully created.' }
+        format.html { redirect_to @community, notice: 'Post: #{@community.title.capitalize} was successfully created.' }
         format.json { render :show, status: :created, location: @community }
       else
         format.html { render :new }
@@ -43,7 +47,7 @@ class CommunitiesController < ApplicationController
   def update
     respond_to do |format|
       if @community.update(community_params)
-        format.html { redirect_to @community, notice: 'Community was successfully updated.' }
+        format.html { redirect_to @community, notice: 'Post: #{@community.title.capitalize} was successfully updated.' }
         format.json { render :show, status: :ok, location: @community }
       else
         format.html { render :edit }
@@ -57,7 +61,7 @@ class CommunitiesController < ApplicationController
   def destroy
     @community.destroy
     respond_to do |format|
-      format.html { redirect_to communities_url, notice: 'Community was successfully destroyed.' }
+      format.html { redirect_to communities_url, notice: 'Post: #{@community.title.capitalize} was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +74,12 @@ class CommunitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def community_params
-      params.require(:community).permit(:name,:post_image, :title, :content)
+      params.require(:community).permit(:name,:post_image, :title, :content, :member_id)
     end
+
+    def self.all_except(community)
+  where.not(id: @community)
+end
+
+    
 end

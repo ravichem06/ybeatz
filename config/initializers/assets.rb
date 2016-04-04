@@ -10,7 +10,7 @@ Rails.application.config.assets.precompile += %w( font-awesome.css )
 Rails.application.config.assets.precompile += %w( social-icons.css )
 Rails.application.config.assets.precompile += %w( style.css )
 Rails.application.config.assets.precompile += %w( font-awesome.min.css )
-Rails.application.config.assets.precompile += %w( jquery-1.11.3.min.js )
+Rails.application.config.assets.precompile += %w( jquery-1.11.3.min.js jquery.prettySocial.min.js )
 Rails.application.config.assets.precompile += %w( jquery.backstretch.min.js )
 Rails.application.config.assets.precompile += %w( jquery.tweet.js )
 Rails.application.config.assets.precompile += %w( jflickrfeed.js )
@@ -30,8 +30,9 @@ Rails.application.config.assets.precompile += %w( jquery.mobile.customized.min.j
 Rails.application.config.assets.precompile += %w( jquery.easing.1.3.js )
 Rails.application.config.assets.precompile += %w( camera.js )
 Rails.application.config.assets.precompile += %w( camera.css )
-Rails.application.config.assets.precompile += %w( community.css contact_us.css)
+Rails.application.config.assets.precompile += %w( community.css contact_us.css editors.css)
 Rails.application.config.assets.precompile += %w( logo2.png )
+Rails.application.config.assets.precompile += %w( app.js all.js )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

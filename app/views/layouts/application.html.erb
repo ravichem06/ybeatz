@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="hide-sidebar ls-bottom-footer" lang="en">
+<html class="hide-sidebar ls-bottom-footer login" lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -9,20 +9,23 @@
   <meta name="author" content="">
   
 
- <%= stylesheet_link_tag    "bootstrap.min.css" %>
- <%= stylesheet_link_tag    "font-awesome.css" %>
- <%= stylesheet_link_tag    "all.css" %>
- <%= stylesheet_link_tag    "app.css" %>
+ <%= stylesheet_link_tag    "bootstrap.css" %>
+ <%= stylesheet_link_tag    "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", media: 'all' %>
+ 
+ 
 
 
  <%= javascript_include_tag 'jquery-1.11.3.min.js' %>
  <%= javascript_include_tag 'bootstrap.min.js' %>
- <%= javascript_include_tag 'all.js' %>
- <%= javascript_include_tag 'app.js' %>
+ 
  
 </head>
-<%= render 'shared/notification' %>
+<body>
+
+
 
 <%= yield %>
 
+
+</body>
 </html>

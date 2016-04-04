@@ -5,7 +5,7 @@ layout 'landing_page'
 
 def index
 	
-
+@subscriber = Subscriber.new
 
 end
 

@@ -1,0 +1,12 @@
+<td>
+  <%= link_to member.email, member %>
+</td>
+<td>
+  <%= form_for(member) do |f| %>
+    <%= f.select(:role, Member.roles.keys.map {|role| [role.titleize,role]}) %>
+    <%= f.submit 'Change Role', :class => 'button-xs' %>
+  <% end %>
+</td>
+<td>
+  <%= link_to("Delete Member", member_path(member), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs') unless member == current_member %>
+</td>

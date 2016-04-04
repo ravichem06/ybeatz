@@ -1,12 +1,16 @@
 <%= stylesheet_link_tag    "bootstrap.css" %>
-<% if !flash[:notice].blank? %>
-        <div class="notice">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
+
+     
+      <script>
+    setTimeout("$('.error_msgs').fadeOut('slow')", 5000)
+  </script>
+        
+     
 <div class="heading">
-  <h1><strong>Contact Us</strong></h1>
+  <span class = "fa fa-envelope fa-5x"><h1><strong>Contact Us /</strong></h1>
+  <p>Here is how you can contact us</p></span>
 </div>
+
 <div class="note">
   Send us a note. We will be quick to get in <br/>touch with you.
 </div>

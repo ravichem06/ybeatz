@@ -1,0 +1,46 @@
+<!-- the comment box -->
+                   
+                    <div class="row">
+                    <!-- <div class="comment-form"> -->
+                      <div class="col-md-8 comment-form"   >
+                      
+                      <h3>Leave a Reply</h3>
+                      <div class="col-md-2" style="padding-left: 30px;"><%= image_tag "comment-icon.png", :style => "width: 75px; height: 75px;" %></div>
+                      <div class="col-md-10">
+                        <div class="form-inputs">
+                            
+                            
+                            <%= form_for ([@community, @community.comments.build]) do |f| %>
+                                <div class="form-group">
+                                    <%= f.text_area :content, :placeholder => "COMMENT*", :required => true, :rows => 8, :class => "comment-box" %>
+                                </div>
+
+
+                            <% if member_signed_in? %>    
+                                <div class="hidden">
+                                    <%= f.text_field :commenter, :value => "#{current_member.name} #{current_member.surname}" %>
+                                </div>
+                                <div class="hidden">
+                                    <%= f.email_field :email, :value => "#{current_member.email}" %>
+                                </div>
+                            <% else %>
+                                <div class="form-group">
+                                    <%= f.text_field :commenter, :placeholder => "NAME*", :required => true, :class => "comment-input"  %>
+                                </div>
+                                <div class="form-group">
+                                    <%= f.email_field :email, :placeholder => "EMAIL*", :required => true, :class => "comment-input"  %>
+                                </div>
+                            <% end %>
+
+
+                            <div>
+                                <%= f.submit 'POST COMMENT', :class => "comment-button" %>
+                            </div>
+                            <% end %>
+                        </div>
+                        </div>
+                      <!-- </div> -->
+                      </div>
+                    </div>
+
+                <!-- comment form end -->

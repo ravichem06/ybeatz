@@ -12,7 +12,7 @@ layout 'common'
     if @contact.deliver
       
       flash[:notice] = "Thank you for your message. We will contact you soon!"
-      redirect_to(:controller=> 'landing_page',:action => 'index')
+      redirect_to(:controller=> 'contacts')
     else
       flash.now[:error] = 'Cannot send message.'
       render layout: "common", file: "contacts/new"

@@ -1,0 +1,108 @@
+ <div class="st-pusher" id="content">
+
+      <!-- sidebar effects INSIDE of st-pusher: -->
+      <!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
+
+      <!-- this is the wrapper for the content -->
+      <div class="st-content">
+
+        <!-- extra div for emulating position:fixed of the menu -->
+        <div class="st-content-inner">
+
+          <div class="container-fluid">
+
+            <div class="media media-grid media-clearfix-xs">
+              
+            <%= render "profile_sidebar" %>
+
+
+              <div class="media-body">
+
+              <div class="row">
+                  <div class="col-md-12">
+                    <div class="panel panel-default">
+                      <div class="panel-heading panel-heading-gray">
+                        
+                        <i class="fa fa-fw fa-info-circle"></i> About
+                      </div>
+                      <div class="panel-body">
+                        <ul class="list-unstyled profile-about margin-none">
+                          <li class="padding-v-5">
+                            <div class="row">
+                              <span class="text-muted">
+                              <%= @member.profile.about %>
+                              </span>
+                              
+                            </div>
+                          </li>
+                          
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                
+
+                <!-- Posts start -->
+
+                <div class="panel panel-default">
+                  <div class="panel-heading panel-heading-gray">
+                    <i class="fa fa-clone"></i> 
+                    <% if member_signed_in? %>
+                      <% if @member.id == current_member.id %>
+                      Your Posts
+                      <% end %>
+                    <% else %>
+                      Posts by the Author
+                    <% end %>
+                  </div>
+                  
+                  <div class="panel-body">
+                    <div class="row">
+                    <% @posts.each do |post| %>
+                      <div class="col-md-4">
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <a href="#" class="h5 margin-none"><%= post.title %></a>
+                            <div class="text-muted">
+                              <small><i class="fa fa-calendar"></i> <%= post.created_at.day %>.<%= post.created_at.month %>.<%= post.created_at.year %></small>
+                            </div>
+                          </div>
+                          <a href="#">
+                          <div class="profile-post-img">
+                            <%=link_to image_tag(post.post_image.url(:medium), :class=> "img-responsive"), :action=> :show, :id => post.id %>
+                            </div>
+                          </a>
+                          <div class="panel-body">
+                            
+                            <p><%=h truncate(sanitize(post.content), :length => 25) %></p>
+                            
+                            <div>
+                              <div class="btn-2 pull-right" style="color: #fff;">
+                                <%= link_to 'Read', :action=> :show, :id => post.id  %></a>
+                              </div>
+
+                              <a href="#" class="text-muted"> <i class="fa fa-comments"></i> <%= post.comments.count %></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <% end %>
+
+                      <div class="pagination" style="float: right; padding-right: 15px; margin: 0;" >
+                  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+                  </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <!-- posts end -->
+                
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>

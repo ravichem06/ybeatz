@@ -1,0 +1,102 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-md-4 user-details">
+            
+           <div class="profile-page" style="height: 1400px;">
+           
+            <div class="user-image">
+                <img src="http://www.gravatar.com/avatar/2ab7b2009d27ec37bffee791819a090c?s=100&d=mm&r=g" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img-circle">
+             </div>
+            
+            <div class="user-info-block">
+                <div class="user-heading">
+                    <h3>Karan Singh Sisodia</h3>
+                    <span class="help-block">Chandigarh, IN</span>
+                </div>
+                <!-- <ul class="navigation">
+                    <li class="active">
+                        <a data-toggle="tab" href="#information">
+                            <span class="glyphicon glyphicon-user"></span>  Personal Details
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#social-info">
+                            <span class="glyphicon glyphicon-cog"></span>  Social Information
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#location">
+                            <span class="glyphicon glyphicon-envelope"></span>  Current Location
+                        </a>
+                    </li>
+                   
+                     
+                </ul> -->
+                <div class="user-body">
+                <%= simple_form_for(@profile , :url => {:action => "create",  :member_id => current_member.id}, :class=> "form-horizontal", :html=>{:multipart=>true}) do |f| %>
+                
+                <%= f.error_notification %>
+
+                    <div class="hidden">
+                    <%= f.input :member_id, :value => "#{current_member.id}" %>
+                    </div>
+                      <p> Overview</p>
+                    <div class="profile-box ">
+                    <%= f.input :short_description, :label => "Describe yourself in one line..."  %>
+                    <%= f.input :about, as: :text, :label => "Tell us something about yourself..." %>
+                    <%= f.input  :gender, :collection => ['Male' ,'Female'] %>
+
+                    </div>
+
+                    <p> You date of birth</p>
+                      <div class="profile-box ">
+                      
+                      <%= f.input :DOB, as: :date,
+                               order: [:day, :month, :year], :label => false  %>
+                     
+                     </div>
+                    <p> Where are you currently located?</p>
+                    <div class="profile-box">
+                    <%= f.input :country %>
+                    <%= f.input :state %>
+                    <%= f.input :city %>
+
+                      </div>
+
+                      <p> Social Information</p>
+                      
+                      <div class="profile-box">`
+                      <%= f.input :facebook_link, :label => "Your facebook ID" %>
+                      <%= f.input :twitter_link, :label => "Your twitter ID"%>
+                      <%= f.input :linkedin_link, :label => "Your linkedin ID"%>
+
+
+                      </div>
+  
+
+                <div class="form-actions">
+                    <%= f.button :submit, 'Create', :class=> "btn btn-primary" %>
+                  </div>
+                <% end %>
+                    <!-- <div class="tab-content">
+                        <div id="information" class="tab-pane active">
+                            
+
+
+
+
+                        </div>
+                        <div id="social-info" class="tab-pane">
+                            <h4>Settings</h4>
+                        </div>
+                        <div id="location" class="tab-pane">
+                            <h4>Send Message</h4>
+                        </div>
+                        
+                    </div> -->
+                </div>
+            </div>
+        </div>
+  </div>
+</div>
+</div>

@@ -14,14 +14,16 @@
         <!-- CSS -->
         <%= stylesheet_link_tag    'http://fonts.googleapis.com/css?family=PT+Sans:400,700', media: 'all' %>
         
-        <%= stylesheet_link_tag    "bootstrap.min.css" %>
+        <%= stylesheet_link_tag    "bootstrap.css" %>
         <%= stylesheet_link_tag    "social-buttons.css" %>
-        <%= stylesheet_link_tag    "font-awesome.css" %>
+        <%= stylesheet_link_tag    "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", media: 'all' %>
         <%= stylesheet_link_tag    "social-icons.css" %>
         <%= stylesheet_link_tag    "coming-soon-style.css" %>
-        <%= stylesheet_link_tag    "font-awesome.min.css" %>
+        <%= stylesheet_link_tag    "font-awesome.css" %>
         <%= stylesheet_link_tag    "contact_us.css" %>
-
+        <%= stylesheet_link_tag    "editors.css" %>
+         
+        
         <!-- Javascript -->
         
         <%= javascript_include_tag 'jquery-1.11.3.min.js' %>
@@ -79,18 +81,14 @@
             <li><%=link_to("HOME", :controller=> "landing_page")%></li>
             
             <li><%=link_to("COMMUNITY", :controller=> "communities")%></li>
+            <% if member_signed_in? %>
+              <% if current_member.try(:admin?) %>
+                <li><%= link_to 'MEMBERS', members_path %></li>
+              <% end %>
+            <% end %>
            </ul>
            
-          <ul class="nav navbar-nav navbar-right"> 
-           <% if member_signed_in? %>
-            <div class="sign-out-home">
-            <li>Signed in as <%=current_member.name%> <%=current_member.surname%> | <%= link_to('Sign Out', destroy_member_session_path, :method => :delete, :class => "btn btn-primary") %></li>
-            </div>
-            <%else%>
-<li><%=link_to "Log In", new_member_session_path %></li>
-            <li><%=link_to 'Sign Up', new_member_registration_path %></li>
-            <%end%>
-</ul>
+          <%= render 'shared/navigation_right_dropdown'%>
 </div>
 </div> 
 </div>

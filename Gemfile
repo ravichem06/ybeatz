@@ -15,10 +15,12 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'twitter-bootstrap-rails', '~> 3.2'
 gem 'bootstrap-sass', '~> 3.3.0'
+gem "font-awesome-rails"
 gem 'mail_form'
 gem 'simple_form', '~> 3.2'
 gem 'aws-sdk', '~> 2'
 gem 'country_select'
+gem 'social-share-button'
 # Use jquery as the JavaScript library
 gem 'paperclip', '~> 4.2'
 gem 'jquery-rails'
@@ -36,6 +38,11 @@ gem 'devise'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'ckeditor', github: 'galetahub/ckeditor'
+
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -45,16 +52,16 @@ gem 'devise'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-end
-
-group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
+  
+  gem 'quiet_assets'
+  gem 'rails_layout'
+  gem 'spring-commands-rspec'
   gem 'web-console', '~> 2.0'
 end
 
 group :production do
 
-	gem 'rails_12factor', '0.0.2'
+  gem 'rails_12factor', '0.0.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

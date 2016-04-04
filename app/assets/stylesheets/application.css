@@ -11,18 +11,25 @@
  * file per style scope.
  *
  *= require_tree .
- *= require_self
  *= require bootstrap
+ *= require font-awesome
+ *= require social-share-button
+ *= require_self
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @charset "UTF-8";
+@import "font-awesome-sprockets";
+@import "social-share-button";
+@import "font-awesome"
 
-.hidden { display: none; }
+
+
 
 /*flash*/
 
 
+.hidden { display: none; }
 
 .contact input{
 

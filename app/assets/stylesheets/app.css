@@ -1,3 +1,83 @@
+#error_explanation:not(:empty) {
+  text-align: left;
+  @extend .alert;
+  @extend .alert-danger;
+}
+#error_explanation h2 {
+  font-size: 16px;
+  color: #fff;
+  
+}
+
+
+
+
+.profile{
+    width: 37px;
+    height: 37px;
+    margin-top: 10px;
+    float: left;
+    padding: 1px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+/*Notification Bar*/
+
+.error {
+
+padding: 4px 0 6px 0;
+background-color: #518d8a;
+color: #fff;
+text-align: center;
+font-size: 18px;
+font-family: 'Calibri light', Helvetica, Arial, sans-serif;
+}
+
+.alert {
+    padding: 4px 0 6px 0;
+background-color: #518d8a;
+border-color: #eed3d7;
+color: #fff;
+text-align: center;
+font-size: 16px;
+font-family: 'Calibri light', Helvetica, Arial, sans-serif;
+}
+
+.success {
+padding: 4px 0 6px 0;
+background-color: #518d8a;
+border-color: #d6e9c6;
+color: #fff;
+text-align: center;
+font-size: 18px;
+font-family: 'Calibri light', Helvetica, Arial, sans-serif;
+}
+
+.notice {
+padding: 4px 0 6px 0;
+background-color: #518d8a;
+border-color: #d6e9c6;
+color: #fff;
+text-align: center;
+font-size: 18px;
+font-family: 'Calibri light', Helvetica, Arial, sans-serif;
+}
+
+.form-control:focus{
+
+background-color: #DADADA;
+
+}
+
+/*#error_explanation {  padding: 0; margin: 0 auto 1.5em;
+  border: 1px solid #AA0000; background-color: #FFFFFF; font-size: 12px; }
+#errorExplanation h2 { font-weight: bold; font-size: 12px;
+  padding: 5px 5px 5px 15px; margin: 0; 
+  background-color: #AA0000; color: #FFFFFF; }*/
+#error_explanation p { color: #333333; margin: 0; padding: 3px 0.5em; }
+#error_explanation ul { margin-top: 0; }
+#error_explanation ul li { list-style: square; }
+
 #filter {
   margin-bottom: 15px;
   padding-bottom: 15px;
@@ -237,7 +317,7 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 body {
-  line-height: 1.53rem;
+ 
   font-size: 1rem;
 }
 .text-display-4 {
@@ -17054,9 +17134,7 @@ ul.timeline-list .media-body.fixed {
   box-shadow: 0 -3px 5px -3px rgba(0, 0, 0, 0.15);
   z-index: 101;
 }
-.ls-bottom-footer body {
-  padding-bottom: 60px;
-}
+
 .bottom-footer body {
   padding-bottom: 45px;
 }

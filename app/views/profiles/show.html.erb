@@ -1,0 +1,173 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-md-4 user-details">
+            
+           <div class="profile-page" style="height: 600px;">
+           
+            <div class="user-image">
+                <%= image_tag @profile.member.avatar.url(:medium), :class => 'img-circle', :alt => @profile.member.name, :style => "
+    width: 127px;
+    height: 108px;" %>
+                <% if member_signed_in? %>
+                  <% if @member.id == current_member.id %>
+                <div class="pull-right" style="padding-top: 58px; position: relative; font-size: 14px; text-decoration: none; margin-right: 5px;">
+                    <% if @member.profile.blank? %>
+                    <%= link_to "Edit Profile", new_profile_path  %>&nbsp <i class="fa fa-pencil fa-2x"></i></a></div>
+                    <% else %>
+                    <%= link_to "Edit Profile", edit_profile_path(:member_id => current_member.id)  %>&nbsp <i class="fa fa-pencil fa-2x"></i></a></div>
+                    <% end %>
+                <% end %>
+            <% end %>
+            </div>
+            
+            <div class="user-info-block">
+                <div class="user-heading">
+                    <h3><%= @profile.member.name %> <%= @profile.member.surname %> </h3>
+                    <span class="help-block"><%= @profile.short_description %></span>
+                </div>
+                <!-- <ul class="navigation">
+                    <li class="active">
+                        <a data-toggle="tab" href="#information">
+                            <span class="glyphicon glyphicon-user"></span>  Personal Details
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#social-info">
+                            <span class="glyphicon glyphicon-cog"></span>  Social Information
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#location">
+                            <span class="glyphicon glyphicon-envelope"></span>  Current Location
+                        </a>
+                    </li>
+                   
+                     
+                </ul> -->
+                <div class="user-body">
+                    <div class="tab-content">
+                        <div id="information" class="tab-pane active">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="panel panel-default">
+                                  <div class="panel-heading panel-heading-gray">
+                                    
+                                    <i class="fa fa-fw fa-info-circle"></i> About
+                                  </div>
+                                  <div class="panel-body">
+                                    <ul class="list-unstyled profile-about margin-none">
+                                      <li class="padding-v-5">
+                                        <div class="row">
+                                          <span class="text-muted">
+                                          <%= @profile.about %>
+                                          </span>
+                                          
+                                        </div>
+                                      </li>
+                                      
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div class="item col-md-6 col-xs-12">
+                              <div class="panel panel-default">
+                                <table class="table table-striped margin-none">
+                                  <thead>
+                                    <tr>
+                                      <th>Social Information</th>
+                                      <th class="text-right"></th>
+                                      
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                         <a href="#" class="text-primary">Facebook</a></td>
+                                      <td class="text-right"><%= @profile.facebook_link %></td>
+                                      <td class="text-right">
+                                        <div class="sparkline-line width-100" sparkHeight="20" sparkWidth="100%" data-data="[ 484, 457, 397, 591, 496, 508, 366, 196 ]"></div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <a href="#" class="text-primary">Twitter</a></td>
+                                      <td class="text-right"><%= @profile.twitter_link %></td>
+                                      <td class="text-right">
+                                        <div class="sparkline-line width-100" sparkHeight="20" sparkWidth="100%" data-data="[ 363, 371, 221, 258, 318, 582, 536, 312 ]"></div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <a href="#" class="text-primary">Linkedin</a></td>
+                                      <td class="text-right"><%= @profile.linkedin_link %></td>
+                                      <td class="text-right">
+                                        <div class="sparkline-line width-100" sparkHeight="20" sparkWidth="100%" data-data="[ 315, 568, 323, 517, 520, 368, 311, 284 ]"></div>
+                                      </td>
+                                    </tr>
+                                    
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+
+
+                            <div class="item col-md-6 col-xs-12">
+                              <div class="panel panel-default">
+                                <table class="table table-striped margin-none">
+                                  <thead>
+                                    <tr>
+                                      <th>Current Location</th>
+                                      <th class="text-right"></th>
+                                      
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                        <a href="#" class="text-primary">City</a></td>
+                                      <td class="text-right"><%= @profile.city %></td>
+                                      <td class="text-right">
+                                        <div class="sparkline-line width-100" sparkHeight="20" sparkWidth="100%" data-data="[ 484, 457, 397, 591, 496, 508, 366, 196 ]"></div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <a href="#" class="text-primary">State</a></td>
+                                      <td class="text-right"><%= @profile.state %></td>
+                                      <td class="text-right">
+                                        <div class="sparkline-line width-100" sparkHeight="20" sparkWidth="100%" data-data="[ 363, 371, 221, 258, 318, 582, 536, 312 ]"></div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <a href="#" class="text-primary">Country</a></td>
+                                      <td class="text-right"><%= @profile.country %></td>
+                                      <td class="text-right">
+                                        <div class="sparkline-line width-100" sparkHeight="20" sparkWidth="100%" data-data="[ 315, 568, 323, 517, 520, 368, 311, 284 ]"></div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+
+
+
+                        <!-- </div>
+                        <div id="social-info" class="tab-pane">
+                            <h4>Settings</h4>
+                        </div>
+                        <div id="location" class="tab-pane">
+                            <h4>Send Message</h4>
+                        </div> -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+</div>
+</div></div>

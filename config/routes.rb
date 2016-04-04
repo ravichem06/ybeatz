@@ -1,9 +1,25 @@
 Rails.application.routes.draw do
   
   
+  
+  
+
+  root 'landing_page#index'
+
+  mount Ckeditor::Engine => '/ckeditor'
+  
+  get 'editors/index'
+
+  
   devise_for :members
-  resources :communities
-  resources :blogs
+  resources :members 
+  
+  resources :profiles
+
+  resources :communities do
+    resources :comments
+  end
+
     get 'auth/:provider/callback', to: 'sessions#create'
     get 'auth/failure', to: redirect('/')
     get 'signout', to: 'sessions#destroy', as: 'signout'
@@ -17,7 +33,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'landing_page#index'
+  
 
   match '/contacts',     to: 'contacts#new',             via: 'get'
   resources "contacts", only: [:new, :create]
