@@ -1,5 +1,8 @@
 class Community < ActiveRecord::Base
 
+extend FriendlyId
+friendly_id :title, :use => [:slugged, :history]
+
 
 
   
@@ -14,5 +17,11 @@ belongs_to :member
 has_many :comments
 scope :newest_first, lambda { order("communities.created_at DESC")}
 scope :without_community, lambda{|community| community ? {:conditions => ["community.id != ?", @community.id]} : {} }
+
+# def to_param
+
+# 	"#{id}-#{title.parameterize}"
+
+# end
 
 end

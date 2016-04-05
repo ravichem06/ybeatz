@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331082905) do
+ActiveRecord::Schema.define(version: 20160404145304) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",    limit: 255, null: false
@@ -53,9 +53,11 @@ ActiveRecord::Schema.define(version: 20160331082905) do
     t.integer  "post_image_file_size",    limit: 4
     t.datetime "post_image_updated_at"
     t.integer  "member_id",               limit: 4
+    t.string   "slug",                    limit: 191
   end
 
   add_index "communities", ["member_id"], name: "index_communities_on_member_id", using: :btree
+  add_index "communities", ["slug"], name: "index_communities_on_slug", unique: true, using: :btree
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -85,6 +87,19 @@ ActiveRecord::Schema.define(version: 20160331082905) do
     t.integer  "ticket_price",        limit: 4
   end
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",           limit: 191, null: false
+    t.integer  "sluggable_id",   limit: 4,   null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope",          limit: 191
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
   create_table "members", force: :cascade do |t|
     t.string   "email",                  limit: 191, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -105,10 +120,12 @@ ActiveRecord::Schema.define(version: 20160331082905) do
     t.string   "avatar_content_type",    limit: 255
     t.integer  "avatar_file_size",       limit: 4
     t.datetime "avatar_updated_at"
+    t.string   "slug",                   limit: 191
   end
 
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
+  add_index "members", ["slug"], name: "index_members_on_slug", unique: true, using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "member_id",         limit: 4

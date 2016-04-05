@@ -21,10 +21,14 @@
                     
                     </div>
                     <ul class="icon-list icon-list-block">
+                    <% if @member.profile.blank? %>
+                      <li><i class="fa fa-envelope fa-fw"></i> <%= @member.email %></li>
+                      <% else %>
                       <li><i class="fa fa-envelope fa-fw"></i> <%= @member.email %></li>
                       <li><i class="fa fa-facebook fa-fw"></i> <%= @member.profile.facebook_link %></li>
                       <li><i class="fa fa-twitter fa-fw"></i> <%= @member.profile.twitter_link %></li>
                       <li><i class="fa fa-linkedin fa-fw"></i> <%= @member.profile.linkedin_link %></li>
+                      <% end %>
                     </ul>
                   </div>
                       <% if member_signed_in? %>

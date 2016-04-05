@@ -30,7 +30,12 @@
                           <li class="padding-v-5">
                             <div class="row">
                               <span class="text-muted">
+                              <% if @member.profile.blank? %>
+                              <p><%= link_to 'Click here', profile_path(current_member.id), :member_id => current_member.id %> to complete your profile </p>
+                              <%else %>
+
                               <%= @member.profile.about %>
+                              <% end %>
                               </span>
                               
                             </div>

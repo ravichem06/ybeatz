@@ -7,13 +7,14 @@ class CommunitiesController < ApplicationController
   # GET /communities
   # GET /communities.json
   def index
-    @communities = Community.newest_first.paginate(page: params[:page], per_page: 9)
+    @communities = Community.newest_first.where(params[:slug]).paginate(page: params[:page], per_page: 9)
   end
 
   # GET /communities/1
   # GET /communities/1.json
   def show
-@communities = Community.newest_first.paginate(page: params[:page], per_page: 5).where('id NOT IN (?)', @community.id)
+    
+    @communities = Community.newest_first.where(params[:slug]).paginate(page: params[:page], per_page: 5)
 
   end
 
@@ -69,7 +70,7 @@ class CommunitiesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_community
-      @community = Community.find(params[:id])
+      @community = Community.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -77,9 +78,8 @@ class CommunitiesController < ApplicationController
       params.require(:community).permit(:name,:post_image, :title, :content, :member_id)
     end
 
-    def self.all_except(community)
-  where.not(id: @community)
-end
+    
+
 
     
 end

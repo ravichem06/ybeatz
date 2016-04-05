@@ -10,14 +10,14 @@ class MembersController < ApplicationController
 
   def show
 
-    @member = Member.find(params[:id])
+    @member = Member.friendly.find(params[:id])
     @posts = @member.communities.paginate(page: params[:page], per_page: 6)
     
   end
 
 
   def update
-    @member = Member.find(params[:id])
+    @member = Member.friendly.find(params[:id])
     if @member.update_attributes(secure_params)
       redirect_to members_path, :notice => "Member role changed to #{@member.role.capitalize}."
     else
@@ -26,7 +26,7 @@ class MembersController < ApplicationController
   end
 
   def destroy
-    member = Member.find(params[:id])
+    member = Member.friendly.find(params[:id])
     member.destroy
     redirect_to members_path, :notice => "Member deleted."
   end

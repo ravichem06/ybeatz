@@ -15,7 +15,7 @@ Devise.setup do |config|
   config.mailer_sender = 'ybeatz@outlook.in'
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  config.mailer = 'UserMailer'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -102,7 +102,7 @@ Devise.setup do |config|
   # config.pepper = 'f628fe4674054afd8a270ddebc0b93a494c46976b92a8bc8bad5369f08d03753dcf8c3ee3d710c197bbdd6b986d81be69b224b84606e942a8c64fc43c05305b3'
 
   # Send a notification email when the user's password is changed
-  # config.send_password_change_notification = false
+  config.send_password_change_notification = true
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without

@@ -19,7 +19,7 @@
                     <%= image_tag 'banner.jpg', class: "event-banner" %>
                     <% end%>
                   </div>
-                  <h3><%=link_to community.title, :action=> :show, :id => community.id %></h3>
+                  <h3><%=link_to community.title, community_path(:id => community.slug) %></h3>
                     <div class="meta">
                     <time datetime="2012-11-09" class="date-1"><i class="fa fa-calendar"></i> <%= community.created_at.day %>.<%= community.created_at.month %>.<%= community.created_at.year %></time>
                     <div class="name-author"><i class="fa fa-user"></i> <%=link_to community.name,member_path(community.member_id) %></div>
@@ -28,7 +28,7 @@
                     <div class="post-content">
                       <p><%=h truncate(sanitize(community.content), :length => 65) %></p></div>
                       <div class="btn-1">
-                      <%=link_to 'Keep Reading...',  :action=> :show, :id => community.id %>
+                      <%=link_to 'Keep Reading...',  community_path(:id => community.slug) %>
                       </div>
                 </div> 
 

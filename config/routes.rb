@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
   
-  
-  
-  
-
   root 'landing_page#index'
 
   mount Ckeditor::Engine => '/ckeditor'
@@ -16,7 +12,7 @@ Rails.application.routes.draw do
   
   resources :profiles
 
-  resources :communities do
+  resources :communities, path: 'post' do
     resources :comments
   end
 
@@ -28,7 +24,7 @@ Rails.application.routes.draw do
     resource :home, only: [:show]
 
     
-  resources :events
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

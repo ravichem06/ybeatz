@@ -134,7 +134,7 @@
     						                </div>
     						            </div>
     						            <div class="col-xs-8">
-    						                <h4><%=link_to community.title, :action=> :show, :id => community.id %>
+    						                <h4><%=link_to community.title, community_path(:id => community.slug) %>
     						                </h4>
     						                <p>by <%= community.name %>
     						                </p>

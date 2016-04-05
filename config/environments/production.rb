@@ -80,10 +80,10 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'nameless-depths-1544.herokuapp.com' }
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
-:address              => "smtp.gmail.com",
+:address              => "smtp-relay.sendinblue.com",
 :port                 => 587,
-:user_name            => ENV['GMAIL_SMTP_USER'],
-:password             => ENV['GMAIL_SMTP_PASSWORD'],
+:user_name            => ENV['SMTP_USER'],
+:password             => ENV['SMTP_PASSWORD'],
 :authentication       => 'plain',
 :enable_starttls_auto => true
 }

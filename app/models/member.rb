@@ -1,5 +1,9 @@
 class Member < ActiveRecord::Base
   
+  extend FriendlyId
+  friendly_id :first_name_and_surname, use: :slugged
+
+
   enum role: [:member, :editor, :admin]
   after_initialize :set_default_role, :if => :new_record?
   has_one :profile
@@ -16,6 +20,10 @@ class Member < ActiveRecord::Base
 
    def set_default_role
     self.role ||= :member
+  end
+
+  def first_name_and_surname
+    "#{name}-#{surname}"
   end
 
 
