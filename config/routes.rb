@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get 'editors/index', path: 'editors/editor-panel'
   get 'admin/index', path: '/admin-panel'
 
-
+  resources :posts
+  resources :topics
+  resources :forums
   
   devise_for :members, controllers: { registrations: "registrations" }
   resources :members 

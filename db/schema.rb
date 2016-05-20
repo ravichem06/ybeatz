@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411203828) do
+ActiveRecord::Schema.define(version: 20160520202422) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",    limit: 255, null: false
@@ -87,6 +87,13 @@ ActiveRecord::Schema.define(version: 20160411203828) do
     t.integer  "ticket_price",        limit: 4
   end
 
+  create_table "forums", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",           limit: 191, null: false
     t.integer  "sluggable_id",   limit: 4,   null: false
@@ -127,6 +134,13 @@ ActiveRecord::Schema.define(version: 20160411203828) do
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
   add_index "members", ["slug"], name: "index_members_on_slug", unique: true, using: :btree
 
+  create_table "posts", force: :cascade do |t|
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "topic_id",   limit: 4
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.integer  "member_id",         limit: 4
     t.string   "short_description", limit: 255
@@ -152,28 +166,24 @@ ActiveRecord::Schema.define(version: 20160411203828) do
     t.string   "name",       limit: 255
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "provider",               limit: 255
-    t.string   "uid",                    limit: 255
-    t.string   "name",                   limit: 255
-    t.string   "oauth_token",            limit: 255
-    t.datetime "oauth_expires_at"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.string   "email",                  limit: 191, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 191
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
+  create_table "topics", force: :cascade do |t|
+    t.string   "name",           limit: 255
+    t.integer  "last_poster_id", limit: 4
+    t.datetime "last_post_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "forum_id",       limit: 4
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  create_table "users", force: :cascade do |t|
+    t.string   "provider",         limit: 255
+    t.string   "uid",              limit: 255
+    t.string   "name",             limit: 255
+    t.string   "oauth_token",      limit: 255
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   add_foreign_key "comments", "communities"
   add_foreign_key "comments", "members"
