@@ -1,5 +1,55 @@
-<h1>New Community</h1>
+<%= stylesheet_link_tag    "bootstrap.css" %>
+<% @page_title = "Create Post" %>
+<div class="container">
+<div class="sidebar col-md-4">
 
-<%= render 'form' %>
+<div id='cssmenu'>
+<ul>
+   <li><span><%= link_to "Your Posts", editors_index_path%></span></li>
+   <li class='active'><span><%= link_to "Create a New Post", new_community_path%></span></li>
+   <li><span><%= link_to "My Profile", member_registration_path%></span></li>
+   
+</ul>
+</div>
+</div>
 
-<%= link_to 'Back', communities_path %>
+<div class="col-md-8">
+<div class="editor-panel">
+<div class="header">
+<h1>Write a New Post</h1>
+</div>
+<%= form_for(@community,  :url => { :action => 'create',:member_id => current_member.id}, :html => {:class => 'form-horizontal '} ) do |f| %>
+ 
+
+  <div class="form-inputs">
+  <div class="hidden">
+  <%= f.text_field :member_id, :placeholder => current_member.id %>
+    </div>
+
+    <div class="hidden">
+  <%= f.text_field :name, :value => "#{current_member.name} #{current_member.surname}"  %>
+    </div>
+
+
+    <%= f.label :title %><br/>
+    <%= f.text_field :title,  :required => true , :class => "edit-input"%> <br/><br/>
+    
+
+    <%= f.file_field :post_image, as: :file, :required => true, :label => 'Banner Image' %>
+    <br/>
+    
+    <%= f.label :content %>
+    <%= f.cktext_area :content, :class => "edit-input", :as => :text, :rows => 8 %>
+      
+    
+      </br>
+      <div>
+      <%= f.submit 'Submit', :class=> "edit-post-button" %> 
+      
+    </div>  
+   
+<% end %>
+</div>
+
+
+</div></div></div>

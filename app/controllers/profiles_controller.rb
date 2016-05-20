@@ -9,6 +9,15 @@ layout 'profile'
   	@member = current_member
   	@profile = @member.profile
 
+      if @member.profile.blank?
+
+        redirect_to new_profile_path
+
+      else
+
+        render :show
+      end
+
   end
 
   def new

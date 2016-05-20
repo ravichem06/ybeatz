@@ -1,3 +1,18 @@
+<% @page_title = "Personal Details" %>
+
+<!-- Page Open Graph Meta Tags -->
+
+<%= content_for(:meta_og) do %>
+    <meta property="og:author" content="<%= @profile.member.name if @profile.member && @profile.member.name %>" />
+    <meta property="og:description" content="<%= truncate(strip_tags(@profile.about), length: 50) %>" />
+    <% if @profile.member.avatar? %>
+        <%= tag :meta, property: 'og:image', content: @profile.member.avatar.url %>
+    <% end %>
+<% end %>
+
+<!-- Page Open Graph Meta Tags Ends-->
+
+
 <div class="container">
   <div class="row">
     <div class="col-sm-4 col-md-4 user-details">
@@ -5,9 +20,9 @@
            <div class="profile-page" style="height: 600px;">
            
             <div class="user-image">
-                <%= image_tag @profile.member.avatar.url(:medium), :class => 'img-circle', :alt => @profile.member.name, :style => "
-    width: 127px;
-    height: 108px;" %>
+                <%= image_tag current_member.avatar.url(:medium), :class => 'img-circle', :alt => current_member.name, :style => "
+    width: 120px;
+    height: 110px;" %>
                 <% if member_signed_in? %>
                   <% if @member.id == current_member.id %>
                 <div class="pull-right" style="padding-top: 58px; position: relative; font-size: 14px; text-decoration: none; margin-right: 5px;">
@@ -22,7 +37,7 @@
             
             <div class="user-info-block">
                 <div class="user-heading">
-                    <h3><%= @profile.member.name %> <%= @profile.member.surname %> </h3>
+                    <h3><%= current_member.name %> <%= current_member.surname %> </h3>
                     <span class="help-block"><%= @profile.short_description %></span>
                 </div>
                 <!-- <ul class="navigation">

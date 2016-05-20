@@ -1,9 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   layout  'events'
-  # before_action :confirm_logged_in
-  before_filter :authenticate_member!
-  
+
   # GET /events
   # GET /events.json
   def index
@@ -34,7 +32,7 @@ class EventsController < ApplicationController
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
-        format.html { render :index }
+        format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
@@ -72,6 +70,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params[:event].permit(:event_name, :description, :day_date, :date, :country, :state, :city, :venue, :banner, :tagline, :ticket_price, :doors_open)
+      params[:event]
     end
 end

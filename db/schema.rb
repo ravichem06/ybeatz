@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404145304) do
+ActiveRecord::Schema.define(version: 20160411203828) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",    limit: 255, null: false
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20160404145304) do
     t.string   "type",              limit: 30
     t.integer  "width",             limit: 4
     t.integer  "height",            limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree

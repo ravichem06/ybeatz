@@ -1,18 +1,26 @@
-<%= simple_form_for(@community) do |f| %>
-  <%= f.error_notification %>
+<%= form_for(@community, :url => { :member_id => current_member.id}, :html => {:class => 'form-horizontal '} ) do |f| %>
+ 
 
   <div class="form-inputs">
+  <div class="hidden">
+  <%= f.text_field :member_id, :placeholder => current_member.id %>
+    </div>
+    <%= f.label :title %><br/>
+    <%= f.text_field :title,  :required => true , :class => "edit-input"%> <br/><br/>
+    
 
-    <%= f.input :name %>
-    <%= f.input :post_image, as: :file, :required => true, :label => 'Banner Image' %>
-
-    <%= f.input :title %>
-
-    <%= f.input :content %>
-
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+    <%= f.file_field :post_image, as: :file, :required => true, :label => 'Banner Image' %>
+    <br/>
+    
+    <%= f.label :content %>
+    <%= f.cktext_area :content, :class => "edit-input", :as => :text, :rows => 8 %>
+      
+    
+      </br>
+      <div>
+      <%= f.submit 'Submit', :class=> "edit-post-button" %> 
+      
+    </div>  
+   
 <% end %>
+</div>

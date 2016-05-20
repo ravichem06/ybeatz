@@ -1,3 +1,12 @@
+<% @page_title = "#{@member.name}'s Profile" %>
+
+<!-- Page Open Graph Meta Tags -->
+
+
+
+<!-- Page Open Graph Meta Tags Ends-->
+
+
  <div class="st-pusher" id="content">
 
       <!-- sidebar effects INSIDE of st-pusher: -->
@@ -30,11 +39,13 @@
                           <li class="padding-v-5">
                             <div class="row">
                               <span class="text-muted">
+                              <% if member_signed_in? %>
                               <% if @member.profile.blank? %>
-                              <p><%= link_to 'Click here', profile_path(current_member.id), :member_id => current_member.id %> to complete your profile </p>
+                              <p><%= link_to 'Click here', profile_path(:id => @member.slug)%> to complete your profile </p>
                               <%else %>
 
                               <%= @member.profile.about %>
+                              <% end %>
                               <% end %>
                               </span>
                               
@@ -69,7 +80,7 @@
                       <div class="col-md-4">
                         <div class="panel panel-default">
                           <div class="panel-body">
-                            <a href="#" class="h5 margin-none"><%= post.title %></a>
+                            <div class="h4 margin-none"><strong><%=link_to post.title, community_path(:id => post.slug) %></strong></div>
                             <div class="text-muted">
                               <small><i class="fa fa-calendar"></i> <%= post.created_at.day %>.<%= post.created_at.month %>.<%= post.created_at.year %></small>
                             </div>
@@ -81,11 +92,11 @@
                           </a>
                           <div class="panel-body">
                             
-                            <p><%=h truncate(sanitize(post.content), :length => 25) %></p>
+                            <p><%=h truncate(strip_tags(post.content), :length => 25) %></p>
                             
                             <div>
                               <div class="btn-2 pull-right" style="color: #fff;">
-                                <%= link_to 'Read', :action=> :show, :id => post.id  %></a>
+                                <%= link_to 'Read', community_path(:id => post.slug)  %></a>
                               </div>
 
                               <a href="#" class="text-muted"> <i class="fa fa-comments"></i> <%= post.comments.count %></a>

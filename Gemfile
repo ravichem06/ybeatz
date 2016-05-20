@@ -18,9 +18,9 @@ gem 'bootstrap-sass', '~> 3.3.0'
 gem "font-awesome-rails"
 gem 'mail_form'
 gem 'simple_form', '~> 3.2'
-gem 'aws-sdk', '~> 2'
+gem 'aws-sdk', '< 2.0'
 gem 'country_select'
-gem 'social-share-button'
+gem 'figaro'
 # Use jquery as the JavaScript library
 gem 'paperclip', '~> 4.2'
 gem 'jquery-rails'
@@ -30,23 +30,25 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'rmagick', '~> 2.15.4'
+gem 'rmagick', '~> 2.15.4', :require => 'RMagick'
+
 gem 'gibbon'
 gem 'omniauth-facebook'
-gem 'devise'
+gem 'devise', '~> 3.5.6'
+gem 'sitemap_generator'
 #gem 'mailchimp-api'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'friendly_id', '~> 5.1.0'
 
-gem 'ckeditor', github: 'galetahub/ckeditor'
+#gem 'ckeditor'
 
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'ckeditor'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

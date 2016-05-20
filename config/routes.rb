@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   
+  mount Ckeditor::Engine => '/ckeditor'
   root 'landing_page#index'
 
-  mount Ckeditor::Engine => '/ckeditor'
+  get "sitemap.xml.gz" => "sitemaps#sitemap", format: :xml, as: :sitemap
   
-  get 'editors/index'
+  get 'editors/index', path: 'editors/editor-panel'
+  get 'admin/index', path: '/admin-panel'
+
 
   
-  devise_for :members
+  devise_for :members, controllers: { registrations: "registrations" }
   resources :members 
   
   resources :profiles

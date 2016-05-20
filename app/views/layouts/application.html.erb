@@ -1,28 +1,62 @@
 <!DOCTYPE html>
-<html class="hide-sidebar ls-bottom-footer" lang="en">
+<html class="hide-sidebar ls-bottom-footer login" lang="en">
 
 <head>
+<title>YBeatz<%= " | #{@page_title}" if @page_title %></title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
+  <%= favicon_link_tag 'https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/favicon.ico' %>
+  <!-- Open Graph Meta Tags -->
+
+
+        <% if content_for?(:meta_og) %>
+            <%= yield :meta_og %>
+        <% else %>
+            <meta property="og:title" content="Ybeatz" />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="http://ybeatz.com" />
+            <%= tag :meta, property: 'og:image', content: image_url('https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/logo2.png') %>
+        <% end %>
+
+
+        <!-- Open Graph Meta tags end -->
   
 
- <%= stylesheet_link_tag    "bootstrap.min.css" %>
- <%= stylesheet_link_tag    "font-awesome.css" %>
- <%= stylesheet_link_tag    "all.css" %>
- <%= stylesheet_link_tag    "app.css" %>
+ <%= stylesheet_link_tag    "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/stylesheets/bootstrap.css" %>
+ <%= stylesheet_link_tag    "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", media: 'all' %>
+
+ 
 
 
- <%= javascript_include_tag 'jquery-1.11.3.min.js' %>
- <%= javascript_include_tag 'bootstrap.min.js' %>
- <%= javascript_include_tag 'all.js' %>
- <%= javascript_include_tag 'app.js' %>
+ <%= javascript_include_tag 'https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/javascripts/jquery-1.11.3.min.js' %>
+ <%= javascript_include_tag 'https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/javascripts/bootstrap.min.js' %>
+ 
  
 </head>
-<%= render 'shared/notification' %>
+<body>
+
+    <!-- GA Code starts here-->
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-76630662-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <!-- GA code Ends Here -->
+
+
 
 <%= yield %>
 
+
+</body>
 </html>

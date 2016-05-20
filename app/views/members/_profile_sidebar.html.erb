@@ -2,13 +2,13 @@
 
                 <div class="width-250 width-auto-xs">
                   <div class="panel panel-default widget-user-1 text-center">
-                    <div class="avatar">
+                    <div class="avatar" style="padding-top: 15px;">
                       <%= image_tag @member.avatar.url(:medium), :class	=> "img-circle" %>
                       <h3><%= @member.name%> <%= @member.surname %></h3>
                       <!-- <a href="#" class="btn btn-success">Following <i class="fa fa-check-circle fa-fw"></i></a> -->
                     </div>
                     <div class="profile-icons margin-none">
-                      <span><i class="fa fa-clone"></i> <%= @member.communities.count %></span>
+                      <span><%#= image_tag("icons/posts.png", :style => "width: 37px; height: 37px;") %> <span class="fa fa-folder-open" aria-hidden="true"></span> <%= @member.communities.count %></span>
                       <!-- <span><i class="fa fa-photo"></i> 43</span>
                       <span><i class="fa fa-video-camera"></i> 3</span> -->
                     </div>
@@ -20,7 +20,7 @@
                       Contact
                     
                     </div>
-                    <ul class="icon-list icon-list-block">
+                    <ul class="icon-list icon-list-block" style="width: 250px;">
                     <% if @member.profile.blank? %>
                       <li><i class="fa fa-envelope fa-fw"></i> <%= @member.email %></li>
                       <% else %>
@@ -39,8 +39,9 @@
                             
                           </div>
                           <ul class="icon-list icon-list-block">
-                            <li><%= link_to 'Details about you', profile_path(current_member.id), :member_id => current_member.id %></li>
+                            <li><%= link_to 'Details about you', profile_path(:id => current_member.slug), :member_id => current_member.id %></li>
                             <li><%= link_to 'Change Password', edit_member_registration_path %></li>
+                            <li><%= link_to 'Change Profile Pic', edit_member_registration_path %></li>
                           </ul>
                         </div>
                         <% end %>

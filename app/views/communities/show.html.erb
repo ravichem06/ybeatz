@@ -1,19 +1,285 @@
-<p id="notice"><%= notice %></p>
+<% @page_title = "#{@community.title}" %>
 
-<p>
-  <strong>name:</strong>
-  <%= @community.name %>
-</p>
+<!-- facebook SDk Starts here -->
+<!-- Facebook Pixel Code -->
+<style type="text/css">
 
-<p>
-  <strong>Title:</strong>
-  <%= @community.title %>
-</p>
+</style>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','//connect.facebook.net/en_US/fbevents.js');
 
-<p>
-  <strong>Content:</strong>
-  <%= @community.content %>
-</p>
+fbq('init', '1627308574197447');
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1627308574197447&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
 
-<%= link_to 'Edit', edit_community_path(@community) %> |
-<%= link_to 'Back', communities_path %>
+
+
+
+<!-- facebook SDK ends here-->
+
+
+<!-- Page Open Graph Meta Tags -->
+
+<%= content_for(:meta_og) do %>
+    <meta property="og:title" content="<%= @community.title %>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:published_time" content="<%= @community.created_at.strftime('%Y-%m-%d %H:%M') %>" />
+    <meta property="og:author" content="<%= @community.member.name if @community.member && @community.member.name %>" />
+    <meta property="og:description" content="<%= truncate(strip_tags(@community.content), length: 100) %>" />
+    <% if @community.post_image %>
+        <%= tag :meta, property: 'og:image', content: @community.post_image.url %>
+    <% end %>
+<% end %>
+
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="<%= request.original_url %>" />
+<meta property="og:site_name" content="Ybeatz.com" />
+<meta property="article:publisher" content="http://facebook.com/ybeatz4artists" />
+<meta property="article:published_time" content="<%= @community.created_at.strftime('%Y-%m-%d %H:%M') %>" />
+<meta property="article:modified_time" content="<%= @community.updated_at.strftime('%Y-%m-%d %H:%M') %>" />
+<meta property="og:updated_time" content="<%= @community.updated_at.strftime('%Y-%m-%d %H:%M') %>" />
+
+
+
+<!-- Page Open Graph Meta Tags Ends-->
+
+    <div class="container">
+
+        <div class="row ">			
+            
+                
+            <div class="row" style="padding-top: 45px">
+
+                  <div class="col-lg-8" style="background-color: #fff; padding: 35px; box-shadow: 2px 2px 10px #888888; ">
+                    <div class="edit-button">
+                        <% if member_signed_in? && @community.member_id == current_member.id %>
+                            <%= link_to 'Edit', edit_community_path(@community), :class => "btn btn-primary"%>
+                            <% else %>
+                                                
+                        <% end %>
+                    </div>  
+
+                    <div class="header">
+                     <center><h1><%= @community.title %>  </h1></center>
+                    </div>
+                    
+                    
+                    <div class="author-details">
+                        <p><center><i class="fa fa-clock-o"></i> <%= @community.created_at.strftime("%-d %^B, %Y at %H:%M") %> | <i class="fa fa-user"></i> <strong><%=link_to @community.name,member_path(:id => @community.member.slug) %></strong></center></p>
+                    </div>
+                    <div class="row>">
+                        <div class="share-row">
+                            <p>Share: <%= link_to image_tag('https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/f-share.png', :style => "width: 37px; height: 37px;"), "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}", :target => :blank %> </p> 
+                             
+                        </div>
+                        <br/>
+                     </div>
+                     <% if @community.post_image?%>
+                     <div class="post-image">                     
+                      <%= image_tag @community.post_image.url(:large) %>
+                      <%else%>
+                      <%= image_tag 'banner.jpg', class: "event-banner" %>
+                     
+                      <% end %>
+                      </div>
+                      <br/>
+                      <p class="lead"><%= @community.content.html_safe %></p>
+                      <br/>
+                    
+                      <div class="row>">
+                          <div class="share-row">
+                              <p>Share</p> 
+                               <%= link_to image_tag('https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/f-share.png', :style => "width: 37px; height: 37px;"), "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}", :target => :blank %>
+                          </div>
+                      </div>
+                        <br/>
+                        <hr>
+                        <br/>
+                       <div class="prev-next">
+                       
+                        <div class="col-sm-6 col-xl-4 pull-left">
+                        <% if @community.previous_post.present? %>
+                          <div class="inset-left-30">
+                            <div ><i class="fa fa-angle-double-left"></i> Previous Post</div>
+                              <div class="post-prev">
+                                 <div class="prev-next-image" style="width: 90px; float: left; padding-top: 6px;">
+                                  <%= image_tag @community.previous_post.post_image.url(:medium), :style => "width: 80px; height: 60px;" if @community.previous_post.present?%></div>
+                                  <%= link_to @community.previous_post.title, @community.previous_post %></div>
+                          </div>
+                          <% end %>
+                        </div>
+
+                        
+                        <div class="col-sm-6 col-xl-4 pull-right" style="text-align: right;">
+                        <% if @community.next_post.present? %>
+                          <div class="pull-right">
+                            <div>Next Post <i class="fa fa-angle-double-right"></i></div>
+                              <div class="post-next">
+                               <%= link_to @community.next_post.title, @community.next_post if @community.next_post.present?%>
+                                <div class="prev-next-image" style="width: 90px; float: right; padding-top: 6px;">
+                                  <%= image_tag @community.next_post.post_image.url(:medium), :style => "width: 80px; height: 60px;" %>
+                                </div>
+                              </div>
+                          </div>
+                          <% end %>
+                        </div>
+                        
+                       </div>
+                    
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+
+                        <% if @community.member.profile.present? &&  @community.member.profile.about.present? %>
+                          <div class="row" style="background-color: #EEEEEE;">
+                            <div class="about-author">
+                              <div class="col-md-3"  style=" padding-top: 15px; padding-bottom: 25px; ">
+                                <%= image_tag @community.member.avatar.url(:medium), :style => "width: 120px; height: 105px;" %>
+                              </div>
+                              
+                              <div class="col-md-9" style=" padding-top: 15px; padding-bottom: 25px; ">
+                                <h1 style="margin-top: 0px;"> About the Author </h1>
+                                <%= @community.member.profile.about %>
+                              </div> 
+                            </div>
+                          </div>
+                        <% else %>
+                        <% end %>
+                        
+                      <%if @community.comments.empty? %>
+                          
+                      <% else %> 
+                      <div  class="heading-divider"> 
+                      <h2><%= @community.comments.count %> Comments</h2>
+                      </div>
+                      <% end %>
+                        
+
+                      <% @community.comments.each do |comment| %>
+                      <div class="row comments-view" >
+                        <div class="col-xs-2">
+                          <% if member_signed_in? %>
+                          <%= image_tag comment.member.avatar.url(:thumb), :style => "width: 100px; height: 80px;"  %>
+                          <% else %>
+                          <%= image_tag "avatar/missing.jpg", :style => "width: 60px; height: 50px;" %>
+                          <% end %>
+                        </div>
+                        <div class="col-xs-10">
+                            <div class="comment-header">
+                              <h3><%= comment.commenter.capitalize %></h3> 
+                              <div class="comment-time">
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= comment.created_at.strftime("%-d %^B, %Y at %H:%M") %>
+                              </div>
+                            </div>
+                           <%= comment.content %>
+                           <br/>
+                        </div>  
+                      </div>
+                      <% end %>
+                  </div>
+                                    
+                
+              
+
+
+                <!-- Side bar starts here -->
+
+                <div class="col-lg-4 ">
+                	<div class="right-sidebar">
+                        <div class="write-story">
+                            
+                        <h3>What's your story?</h3> 
+                        <p>Share your story with us and inspire others like you!</p>
+
+                        </div>
+                        <div class="popular-latest">
+    			        	<!-- <ul class="nav nav-tabs nav-justified">
+    							    <li class="active"><a href="#tab1" data-toggle="tab">Latest</a></li>
+    							    <li><a href="#tab2" data-toggle="tab">Popular</a></li>
+    							  </ul>
+    							  <div class="tab-content">
+    							    <div class="tab-pane active" id="tab1"> -->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                    <h2>Latest</h2>
+                                    </div>
+    							    <% @communities.each do |community| %>
+
+    							     <div class="row">
+
+    						           <div class="col-xs-4">
+    						           	  <div class="sidebar-image" style="margin: 15px;">
+    						                
+    						                <%= image_tag community.post_image.url(:medium), :style => "width: 100px; height: 75px;" %>
+    						              </div>
+    						            </div>
+    						            <div class="col-xs-8">
+    						                <h4><%=link_to community.title, community_path(:id => community.slug) %>
+    						                </h4>
+    						                <p>by <%= community.name %>
+    						                </p>
+    						            </div>
+
+    						        </div>
+
+    						        <hr>
+    						        <% end %>
+                                    </div>
+                                    </div>
+
+    						        <!-- <div class="social-links-side"> -->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                          Never miss anything - Follow Us
+                                        
+                                        </div>
+                                        <ul class="icon-list icon-list-block">
+                                        <center>
+                                          <li><a class="facebook" href="https://www.facebook.com/ybeatz4artists/"><%= image_tag "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/facebook1.png",  class: "social-share", :style => "width: 55px;"%></a>
+                                          
+                                          <%= image_tag "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/linkedin1.png",  class: "social-share", :style => "width: 55px;" %> 
+                                          <%= image_tag "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/google1.png",  class: "social-share" , :style => "width: 55px;"%> 
+                                          <%= image_tag "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/twitter1.png",  class: "social-share", :style => "width: 55px;" %> </li>
+                                          </center>
+                                          
+                                        </ul>
+                                      </div>
+    						       <!--  <h3>Follow us</h3> 
+    						        <%#= image_tag "facebook1.png",  class: "social-share", :style => "width: 55px;"%>
+    						        <%#= image_tag "linkedin1.png",  class: "social-share", :style => "width: 55px;" %>
+    						        <%#= image_tag "google1.png",  class: "social-share" , :style => "width: 55px;"%>
+    						        <%#= image_tag "youtube1.png",  class: "social-share", :style => "width: 55px;" %>
+    						        <%#= image_tag "twitter1.png",  class: "social-share", :style => "width: 55px;" %> -->
+
+    						        <!-- </div>  -->
+                                    <div class="fb-page" data-href="https://www.facebook.com/ybeatz4artists/"  data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/ybeatz4artists/"><a href="https://www.facebook.com/ybeatz4artists/">YBeatZ</a></blockquote></div></div>
+    							    <!-- </div> -->
+    							    <!-- <div class="tab-pane" id="tab2">
+    							      <p>Howdy, I'm in Section 2.</p>
+    							    </div> -->
+    							  <!-- </div>
+    							</div> -->
+
+            		</div>
+                </div>
+            		<!-- Side bar ends here -->
+
+
+        </div> <!-- row ends here -->
+        <br/>
+
+        <%= render "comments/comment" %>
+
+
+    </div>
+    </div>
+

@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+  
   before_action :authenticate_member!, :except => :show
   before_action :admin_only, :except => :show
 

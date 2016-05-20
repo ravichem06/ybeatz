@@ -1,4 +1,5 @@
-<div class="st-content">
+<% @page_title = "Editor Panel" %>
+ <div class="st-content">
 <div class="container">
 <div class="sidebar col-md-4">
 
@@ -6,7 +7,7 @@
 <ul>
    <li class='active'><span><%= link_to "Your Posts", editors_index_path%></span></li>
    <li><span><%= link_to "Create a New Post", new_community_path%></span></li>
-   <li><span><%= link_to "Profile", member_path(current_member.id) %></span></li>
+   <li><span><%= link_to "Profile", member_path(:id => current_member.slug) %></span></li>
    
 </ul>
 </div>
@@ -26,7 +27,7 @@
                       <div class="col-md-4">
                         <div class="panel panel-default">
                           <div class="panel-body">
-                            <a href="#" class="h5 margin-none"><%= post.title %></a>
+                            <div class="h4 margin-none"><strong><%=link_to post.title, community_path(:id => post.slug) %></strong></div>
                             <div class="text-muted">
                               <small><i class="fa fa-calendar"></i> <%= post.created_at.day %>.<%= post.created_at.month %>.<%= post.created_at.year %></small>
                             </div>
@@ -37,12 +38,14 @@
                             </div>
                           </a>
                           <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor impedit ipsum laborum maiores tempore veritatis....</p>
+                            <p><%=h truncate(strip_tags(post.content), :length => 25) %></p>
                             <div>
                               <div class="btn-2 pull-right" style="color: #fff;">
-                                <%= link_to 'Read', community_path(post.id) %></a>
+                                <%= link_to 'Read', community_path(:id => post.slug) %></a>
                               </div>
-
+                              <!-- <div class="btn-3 pull-right" style="color: #fff; ">
+                                <%#= link_to 'Delete', post.destroy, data: { confirm: 'Are you sure?' } %></a>
+                              </div> -->
                               <a href="#" class="text-muted"> <i class="fa fa-comments"></i> <%= post.comments.count %></a>
                             </div>
                           </div>

@@ -6,31 +6,46 @@
     <head>
 
         <meta charset="utf-8">
-        <title>YBeatz - Coming Soon</title>
+        <title>YBeatz<%= " | #{@page_title}" if @page_title %></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
+        <meta name="google-site-verification" content="phjyZ_XKJcjkb-ZYqQzMUr2AABY8yx6-K1EvDER_FzI" />
+        <!-- Open Graph Meta Tags -->
+
+
+        <% if content_for?(:meta_og) %>
+            <%= yield :meta_og %>
+        <% else %>
+            <meta property="og:title" content="Ybeatz" />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="http://ybeatz.com" />
+            <%= tag :meta, property: 'og:image', content: image_url('https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/logo2.png') %>
+        <% end %>
+
+
+        <!-- Open Graph Meta tags end -->
+
         <%= favicon_link_tag 'favicon.ico' %>
         <!-- CSS -->
+        <%= stylesheet_link_tag    "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", media: 'all' %>
         <%= stylesheet_link_tag    'http://fonts.googleapis.com/css?family=PT+Sans:400,700', media: 'all' %>
         
-        <%= stylesheet_link_tag    "bootstrap.min.css" %>
-        <%= stylesheet_link_tag    "social-buttons.css" %>
-        <%= stylesheet_link_tag    "font-awesome.css" %>
-        <%= stylesheet_link_tag    "social-icons.css" %>
-        <%= stylesheet_link_tag    "coming-soon-style.css" %>
-        <%= stylesheet_link_tag    "style.css" %>
-        <%= stylesheet_link_tag    "font-awesome.min.css" %>
+        <%= stylesheet_link_tag    "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/stylesheets/bootstrap.css" %>
+        <%= stylesheet_link_tag    "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/stylesheets/social-buttons.css" %>
+        
+        <%= stylesheet_link_tag    "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/stylesheets/social-icons.css" %>
+        <%= stylesheet_link_tag    "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/stylesheets/coming-soon-style.css" %>
+        <%= stylesheet_link_tag    "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/stylesheets/style.css" %>
+        
 
         <!-- Javascript -->
         
-        <%= javascript_include_tag 'jquery-1.11.3.min.js' %>
-        <%= javascript_include_tag 'jquery.backstretch.min.js' %>
-        <%= javascript_include_tag 'jquery.tweet.js' %>
-        <%= javascript_include_tag 'jflickrfeed.js' %>
-        <%= javascript_include_tag 'coming-soon-scripts.js' %>
-		<%= javascript_include_tag 'bootstrap.min.js' %>
-        <%= javascript_include_tag 'modernizr-2.6.2.min.js' %>
+        <%= javascript_include_tag 'https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/javascripts/jquery-1.11.3.min.js' %>
+        <%= javascript_include_tag 'https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/javascripts/jquery.backstretch.min.js' %>
+        <%= javascript_include_tag 'https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/javascripts/coming-soon-scripts.js' %>
+		    <%= javascript_include_tag 'https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/javascripts/bootstrap.min.js' %>
+        <%= javascript_include_tag 'https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/javascripts/modernizr-2.6.2.min.js' %>
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -58,12 +73,28 @@
     </head>
 
     <body>
+    <!-- GA Code starts here-->
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-76630662-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <!-- GA code Ends Here -->
+
     <!-- facebook SDK starts here-->
     
   
         <!-- Header -->
+        
       
-   <div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -72,46 +103,28 @@
             <span class="icon-bar"></span>
           </button>
           <div class="logo span4">
-          <a class="navbar-brand" href="/"><%= image_tag 'logo2.png' %></a>
+          <a class="navbar-brand" href="/"><%= image_tag 'https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/logo2.png' %></a>
 
           </div>
         </div>
+
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
             <li class="active"><%=link_to("HOME", :controller=> "landing_page")%></li>
-            <li><%=link_to("EVENTS", events_path)%></li>
+            
             <li><%=link_to("COMMUNITY", :controller=> "communities")%></li>
+            
            </ul>
            
-                   
-           
-
-
-            
-            
+          <%= render 'shared/navigation_right_dropdown'%>
           
-          <ul class="nav navbar-nav navbar-right"> 
-           <% if member_signed_in? %>
-            <div class="sign-out-home">
-            <li>Signed in as <%=current_member.name%> <%=current_member.surname%> | <%= link_to('Sign Out', destroy_member_session_path, :method => :delete, :class => "btn btn-primary") %></li>
-            </div>
-            <%else%>
+        </div>
+      </div> 
+</div>
 
-           
-            <li><%=link_to "Log In", new_member_session_path %></li>
-            <li><%=link_to 'Sign Up', new_member_registration_path %></li>
-            <%end%>
+<!-- Notification bar -->
 
-            
-            
-          </ul>
-        </div> 
-       </div> 
-    </div>
-<%= render 'shared/notification' %>
-
-
-        	<!--sign up form end-->
+ <%= render 'shared/notification' %>
 
             <%= yield %> 
 

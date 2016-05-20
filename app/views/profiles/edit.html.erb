@@ -1,17 +1,20 @@
+<% @page_title = "Edit Profile" %>
 <div class="container">
   <div class="row">
     <div class="col-sm-4 col-md-4 user-details">
             
-           <div class="profile-page" style="height: 1400px;">
+           <div class="profile-page" style="height: 1550px;">
            
             <div class="user-image">
-                <img src="http://www.gravatar.com/avatar/2ab7b2009d27ec37bffee791819a090c?s=100&d=mm&r=g" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img-circle">
-             </div>
-            
-            <div class="user-info-block">
+                <%= image_tag current_member.avatar.url(:medium), :class => 'img-circle', :alt => current_member.name, :style => "
+    width: 120px;
+    height: 110px;margin-left: 0;" %>
+                
+                </div>
+                <div class="user-info-block">
                 <div class="user-heading">
-                    <h3>Karan Singh Sisodia</h3>
-                    <span class="help-block">Chandigarh, IN</span>
+                    <h3><%= current_member.name %> <%= current_member.surname %> </h3>
+                    <span class="help-block"><%= @profile.short_description %></span>
                 </div>
                 <!-- <ul class="navigation">
                     <li class="active">
@@ -33,11 +36,8 @@
                      
                 </ul> -->
                 <div class="user-body">
-                <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-                <div class="profile-box ">
-                <%= f.input :avatar, as: :file, :label => 'Change your avatar' %>
-                </div>
-                <% end %>
+                
+                
 
                <%= simple_form_for(@profile, :url => {:action => 'update', :member_id => current_member.id}, :html=>{:multipart=>true}) do |f| %>
 
@@ -81,6 +81,7 @@
                 <div class="form-actions">
                     <%= f.button :submit, 'Update', :class=> "btn btn-primary" %>
                   </div>
+                
                 <% end %>
                     <!-- <div class="tab-content">
                         <div id="information" class="tab-pane active">

@@ -1,3 +1,4 @@
+<% @page_title = "Create Profile" %>
 <div class="container">
   <div class="row">
     <div class="col-sm-4 col-md-4 user-details">
@@ -5,13 +6,15 @@
            <div class="profile-page" style="height: 1400px;">
            
             <div class="user-image">
-                <img src="http://www.gravatar.com/avatar/2ab7b2009d27ec37bffee791819a090c?s=100&d=mm&r=g" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img-circle">
-             </div>
-            
-            <div class="user-info-block">
+                <%= image_tag current_member.avatar.url(:medium), :class => 'img-circle', :alt => current_member.name, :style => "
+    width: 120px;
+    height: 110px;margin-left: 0;" %>
+                
+                </div>
+                <div class="user-info-block">
                 <div class="user-heading">
-                    <h3>Karan Singh Sisodia</h3>
-                    <span class="help-block">Chandigarh, IN</span>
+                    <h3><%= current_member.name %> <%= current_member.surname %> </h3>
+                    <span class="help-block"><%= @profile.short_description %></span>
                 </div>
                 <!-- <ul class="navigation">
                     <li class="active">
@@ -75,7 +78,7 @@
   
 
                 <div class="form-actions">
-                    <%= f.button :submit, 'Create', :class=> "btn btn-primary" %>
+                    <%= f.button :submit, 'Create', :class=> "btn btn-primary" %>&nbsp<%= link_to 'Skip', communities_path %>
                   </div>
                 <% end %>
                     <!-- <div class="tab-content">

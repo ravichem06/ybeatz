@@ -1,0 +1,65 @@
+<% @page_title = "Admin Panel" %>
+ <div class="st-content">
+<div class="container">
+<div class="sidebar col-md-4">
+
+<div id='cssmenu'>
+<ul>
+   <li class='active'><span><%= link_to "Your Posts", editors_index_path%></span></li>
+   <li><span><%= link_to "Members", members_path%></span></li>
+   <li><span><%= link_to "Create a New Post", new_community_path%></span></li>
+   <li><span><%= link_to "Profile", member_path(:id => current_member.slug) %></span></li>
+   
+</ul>
+</div>
+</div>
+
+			<div class="col-md-8">
+			<div class="editor-panel" style="margin-top: 50px;
+    margin-bottom: 50px;">
+
+				<div class="panel panel-default">
+                  <div class="panel-heading panel-heading-gray">
+                    <i class="fa fa-clone"></i> Your Posts</div>
+                  
+                  <div class="panel-body">
+                    <div class="row">
+                    <% @posts.each do |post| %>
+                      <div class="col-md-4">
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <div class="h4 margin-none"><strong><%=link_to post.title, community_path(:id => post.slug) %></strong></div>
+                            <div class="text-muted">
+                              <small><i class="fa fa-calendar"></i> <%= post.created_at.day %>.<%= post.created_at.month %>.<%= post.created_at.year %></small>
+                            </div>
+                          </div>
+                          <a href="#">
+                          <div class="profile-post-img">
+                            <%=link_to image_tag(post.post_image.url(:medium), :class=> "img-responsive"), community_path(post.id) %>
+                            </div>
+                          </a>
+                          <div class="panel-body">
+                            <p><%=h truncate(strip_tags(post.content), :length => 25) %></p>
+                            <div>
+                              <div class="btn-2 pull-right" style="color: #fff;">
+                                <%= link_to 'Read', community_path(:id => post.slug) %></a>
+                              </div>
+                              <!-- <div class="btn-3 pull-right" style="color: #fff; ">
+                                <%#= link_to 'Delete', post.destroy, data: { confirm: 'Are you sure?' } %></a>
+                              </div> -->
+                              <a href="#" class="text-muted"> <i class="fa fa-comments"></i> <%= post.comments.count %></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <% end %>
+
+                      <div class="pagination" style="float: right; padding-right: 15px; margin: 0;" >
+                  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+                  </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                </div></div></div></div>

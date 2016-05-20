@@ -1,9 +1,24 @@
+<% @page_title = "Members" %>
+
 <% will_paginate @members %>
 
 <div class="container">
-  <div class="row">
+<div class="row">
+  <div class="sidebar col-md-4">
+
+    <div id='cssmenu'>
+      <ul>
+         <li><span><%= link_to "Your Posts", editors_index_path%></span></li>
+         <li  class='active'><span><%= link_to "Members", members_path%></span></li>
+         <li><span><%= link_to "Create a New Post", new_community_path%></span></li>
+         <li><span><%= link_to "Profile", member_path(:id => current_member.slug) %></span></li>
+         
+      </ul>
+    </div>
+  </div>
+  
     <h3>Members</h3>
-    <div class="column">
+    <div class="col-md-8">
       <table class="table">
         <tbody>
           <% @members.each do |member| %>
@@ -13,6 +28,10 @@
           <% end %>
         </tbody>
       </table>
+      <br/>
+      <div class="pagination" style="float: right; padding-right: 15px; margin: 0;" >
+        <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+      </div>
     </div>
   </div>
 </div>

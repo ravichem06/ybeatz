@@ -1,4 +1,8 @@
-<title>YBeatz | Log In</title>
+<%= stylesheet_link_tag    "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/stylesheets/all.css" %>
+ <%= stylesheet_link_tag    "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/stylesheets/app.css" %>
+
+<% @page_title = "Login" %>
+
 
 <body class="login">
 
@@ -32,6 +36,9 @@
   <!-- Footer -->
   <footer class="footer">
     <strong>YBeatz</strong> &copy; Copyright 2015
+    <div class="bottom-menu" style="float: right; padding-right: 40px;">
+     <%= link_to 'Home', root_path %>
+    </div>
   </footer>
   
 </body>

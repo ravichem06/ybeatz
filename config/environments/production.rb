@@ -19,6 +19,7 @@ Rails.application.configure do
   # For large-scale production use, consider using a caching reverse proxy like
   # NGINX, varnish or squid.
   # config.action_dispatch.rack_cache = true
+  config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -71,13 +72,24 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
+  config.paperclip_defaults = {
+  storage: :s3,
+  s3_credentials: {
+    bucket: ENV['S3_BUCKET'],
+    access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+    },
+  :url =>':s3_domain_url',
+  :path => '/:class/:attachment/:id_partition/:style/:filename'
+}
+
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => 'nameless-depths-1544.herokuapp.com' }
+config.action_mailer.default_url_options = { :host => 'nameless-depths-1544.herokuapp.com' }
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
 :address              => "smtp-relay.sendinblue.com",
