@@ -1,42 +1,22 @@
 <%= stylesheet_link_tag    "bootstrap.css" %>
+<% if !flash[:notice].blank? %>
+        <div class="notice">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
 
-     
-      <script>
-    setTimeout("$('.error_msgs').fadeOut('slow')", 5000)
-  </script>
-        
-     
-<div class="heading">
-  <span class = "fa fa-envelope fa-5x"><h1><strong>Contact Us /</strong></h1>
-  <p>Here is how you can contact us</p></span>
-</div>
+  <h1>Contact</h1>
 
-<div class="note">
-  Send us a note. We will be quick to get in <br/>touch with you.
-</div>
-
-
-
-  <div class="contact-form ">
-
-  <%= simple_form_for @contact, :url=> {:controller =>'contacts',:action => 'new'}, :html => {:class => 'form-horizontal ' } do |f| %>
-    <%= f.label :name %><br/>
-    <%= f.input_field :name,  :required => true , :class => "contact-input"%>
-    <%= f.label :email %><br/>
-    <%= f.input_field :email, :required => true, :class => "contact-input" %>
-    <%= f.label :subject %>
-    <%= f.input_field :subject,  :required => true, :class => "contact-input" %>
-    <%= f.label :message %>
-    <%= f.input_field :message, :class => "contact-input", :as => :text, :rows => 8 %>
+  <%= simple_form_for @contact, :url=> {:controller =>'contacts',:action => 'new'}, :html => {:class => 'form-horizontal' } do |f| %>
+    <%= f.input :name, :required => true %>
+    <%= f.input :email, :required => true %>
+    <%= f.input :message, :as => :text %>
     <div class= "hidden">
-      <%= f.input_field :nickname, :hint => 'Leave this field blank!' %>
+      <%= f.input :nickname, :hint => 'Leave this field blank!' %>
     </div>
-
-    
     
       </br>
       <div>
-      <%= f.submit 'Send', :class=> "contact-send" %>
+      <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
     </div>  
   <% end %>
-</div>

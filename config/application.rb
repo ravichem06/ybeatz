@@ -15,6 +15,8 @@ module Prototype
     # -- all .rb files in that directory are automatically loaded.
     config.autoload_paths += %W(#{config.root}/lib)
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+    config.assets.precompile += Ckeditor.assets
+    config.assets.precompile += %w( ckeditor/* )
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.

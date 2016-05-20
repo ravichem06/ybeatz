@@ -5,7 +5,7 @@ layout 'landing_page'
 
 def index
 	
-@subscriber = Subscriber.new
+
 
 end
 
@@ -18,7 +18,11 @@ def create
     @subscriber = Subscriber.new(subscriber_params)
     
     # Save the object
-       if @subscriber.save(subscriber_params)
+    if @subscriber.present?
+      puts @subscriber
+      if @subscriber.valid?
+
+        if @subscriber.save(subscriber_params)
            # puts "Subscriber has been saved."
           #@subscriber.subscribe
         
@@ -31,9 +35,19 @@ def create
           redirect_to(:action => 'index')
         else
           # If save fails, redisplay the form so user can fix problems
-      
-      flash[:error] = "Please enter a valid Email Address."
-      redirect_to(:action => 'index')
+          
+          render('index')
+        end
+
+        else
+        flash[:error] = "Please enter a valid Email Address."
+        render('index')
+      end
+
+    else 
+
+      flash[:error] = "Please enter an Email Address."
+      render('index')
     end
   end
 
@@ -49,7 +63,7 @@ def create
       # same as using "params[:subject]", except that it:
       # - raises an error if :subject is not present
       # - allows listed attributes to be mass-assigned
-      params.require(:subscriber).permit(:name, :email)
+      params.require(:subscriber).permit(:email)
     end
 
 end

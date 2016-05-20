@@ -15,22 +15,25 @@
         <%= stylesheet_link_tag    'http://fonts.googleapis.com/css?family=PT+Sans:400,700', media: 'all' %>
         
         <%= stylesheet_link_tag    "bootstrap.min.css" %>
-        <%= stylesheet_link_tag    "social-buttons.css" %>
+        
         <%= stylesheet_link_tag    "font-awesome.css" %>
         <%= stylesheet_link_tag    "social-icons.css" %>
         <%= stylesheet_link_tag    "coming-soon-style.css" %>
         <%= stylesheet_link_tag    "style.css" %>
-        <%= stylesheet_link_tag    "font-awesome.min.css" %>
+        <%= stylesheet_link_tag    "https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" %>
+        <%= stylesheet_link_tag    "coming-soon-style.css" %>
+        <%= stylesheet_link_tag    "main.css" %>
+        <%= stylesheet_link_tag    "camera.css", media: 'all' %>
 
         <!-- Javascript -->
         
         <%= javascript_include_tag 'jquery-1.11.3.min.js' %>
-        <%= javascript_include_tag 'jquery.backstretch.min.js' %>
-        <%= javascript_include_tag 'jquery.tweet.js' %>
-        <%= javascript_include_tag 'jflickrfeed.js' %>
-        <%= javascript_include_tag 'coming-soon-scripts.js' %>
-		<%= javascript_include_tag 'bootstrap.min.js' %>
-        <%= javascript_include_tag 'modernizr-2.6.2.min.js' %>
+        <%= javascript_include_tag 'bootstrap.min.js' %>
+        <%= javascript_include_tag 'events.js' %>
+        <%= javascript_include_tag 'jquery.mobile.customized.min.js' %>
+        <%= javascript_include_tag 'jquery.easing.1.3.js' %>
+        <%= javascript_include_tag 'camera.js' %>
+
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -60,9 +63,36 @@
     <body>
     <!-- facebook SDK starts here-->
     
-  
-        <!-- Header -->
-      
+<!-- facebook SDK ends here-->
+   
+  <style>
+    
+    a {
+      color: #09f;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+    
+    .fluid_container {
+      margin: 0 auto;
+      max-width: 1000px;
+      width: 90%;
+    }
+  </style>
+     <script>
+    jQuery(function(){
+      jQuery('#camera_wrap_1').camera({
+        thumbnails: false
+      });
+        jQuery('#camera_wrap_2').camera({
+        height: '400px',
+        loader: 'bar',
+        pagination: false,
+        thumbnails: true
+      });
+    });
+  </script>  
    <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -78,37 +108,55 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
             <li><%=link_to("HOME", :controller=> "landing_page")%></li>
-            <li><%=link_to("EVENTS", :controller=> "events")%></li>
+            <li class="active"><%=link_to("EVENTS", :controller=> "events")%></li>
             <li><%=link_to("COMMUNITY", :controller=> "communities")%></li>
            </ul>
-           
+           <div >
            <ul class="nav navbar-nav navbar-right"> 
-           <% if member_signed_in? %>
-            <div class="sign-out">
-            <li>Signed in as <%=current_member.name%> <%=current_member.surname%> | <%= link_to('Sign Out', destroy_member_session_path, :method => :delete, :class => "btn btn-primary") %></li>
-            </div>
-            <%else%>
+            <li><div>
 
-           
-            <li><%=link_to "Log In", new_member_session_path %></li>
+
+
+ 
+
+
+
+
+  <% if member_signed_in? %>
+    
+  <ul class="nav navbar-nav navbar-user">
+            <!-- User -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                 <%=current_member.name%> <%=current_member.surname%><span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="messages.html">Messages</a></li>
+                <li><%= link_to('Sign Out', destroy_member_session_path, :method => :delete)%></li>
+              </ul>
+            </li>
+          </ul>
+  <% else %>
+     <li><%=link_to "Log In", new_member_session_path %></li>
             <li><%=link_to 'Sign Up', new_member_registration_path %></li>
             <%end%>
-
+    
+  
+  </div>
+          
             
-            
-          </ul>
-        </div> 
-       </div> 
+          </ul></div>
+        </div><!--/.nav-collapse -->
+      </div>
     </div>
 <%= render 'shared/notification' %>
 
 
-        	<!--sign up form end-->
-
             <%= yield %> 
 
-     
-<%= render 'shared/footer' %>
+     <%= render 'shared/footer' %>
+
 
        
 
