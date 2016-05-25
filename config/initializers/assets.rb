@@ -33,6 +33,8 @@ Rails.application.config.assets.precompile += %w( camera.css )
 Rails.application.config.assets.precompile += %w( community.css contact_us.css editors.css)
 Rails.application.config.assets.precompile += %w( logo2.png )
 Rails.application.config.assets.precompile += %w( app.js all.js )
+Rails.application.config.assets.precompile += %w( forums.css topics.css posts.css )
+
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

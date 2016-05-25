@@ -42,6 +42,12 @@
                             <li><%= link_to 'Details about you', profile_path(:id => current_member.slug), :member_id => current_member.id %></li>
                             <li><%= link_to 'Change Password', edit_member_registration_path %></li>
                             <li><%= link_to 'Change Profile Pic', edit_member_registration_path %></li>
+
+                            <% if current_member.editor? %>
+                              <li><%= link_to "Editor Panel", editors_index_path%></li>
+                            <% elsif current_member.admin? %>
+                              <li><%= link_to "Admin Panel", admin_index_path%></li>
+                            <% end %>
                           </ul>
                         </div>
                         <% end %>

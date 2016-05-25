@@ -1,0 +1,45 @@
+
+<div class="sidebar col-md-4">
+
+  <div id='cssmenu'>
+    <ul>
+      <% if page_title = "Admin Panel" && page_title = "Editor Panel"%> 
+        <% if current_member.editor? %>
+          <li class='active'><span><%= link_to "Your Posts", editors_index_path%></span></li>
+        <% elsif current_member.admin? %>
+          <li class='active'><span><%= link_to "Your Posts", admin_index_path%></span></li>
+        <% end %>
+      <% else %>
+        <% if current_member.editor? %>
+          <li><span><%= link_to "Your Posts", editors_index_path%></span></li>
+        <% elsif current_member.admin? %>
+          <li><span><%= link_to "Your Posts", admin_index_path%></span></li>
+        <% end %>
+      <% end %>
+
+      <% if page_title = "Admin Panel | Members" %>
+        <li class='active'><span><%= link_to "Members", members_path%></span></li>
+      <% else %>
+        <li><span><%= link_to "Members", members_path%></span></li>
+      <% end %>
+
+      <% if page_title = "Create a new Post" %> 
+        <li class='active'><span><%= link_to "Create a New Post", new_community_path%></span></li>
+      <% else %>
+        <li><span><%= link_to "Create a New Post", new_community_path%></span></li>
+      <% end %>
+
+      <% if page_title = "Admin Panel | Forums" %>
+        <li class='active'><span><%= link_to "Forums", forums_path%></span></li>
+      <% else %>
+        <li><span><%= link_to "Forums", forums_path%></span></li>
+      <% end %>
+
+      <% if page_title = "#{current_member.name}'s Profile" %>
+        <li class='active'><span><%= link_to "Profile", member_path(:id => current_member.slug) %></span></li>
+      <% else %>
+        <li><span><%= link_to "Profile", member_path(:id => current_member.slug) %></span></li>
+      <% end %>   
+    </ul>
+  </div>
+</div>

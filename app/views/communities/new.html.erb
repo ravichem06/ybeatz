@@ -1,17 +1,7 @@
 <%= stylesheet_link_tag    "bootstrap.css" %>
-<% @page_title = "Create Post" %>
+<% @page_title = "Create a new Post" %>
 <div class="container">
-<div class="sidebar col-md-4">
-
-<div id='cssmenu'>
-<ul>
-   <li><span><%= link_to "Your Posts", editors_index_path%></span></li>
-   <li class='active'><span><%= link_to "Create a New Post", new_community_path%></span></li>
-   <li><span><%= link_to "My Profile", member_registration_path%></span></li>
-   
-</ul>
-</div>
-</div>
+  <%= render 'shared/panel_sidemenu' %>
 
 <div class="col-md-8">
 <div class="editor-panel">

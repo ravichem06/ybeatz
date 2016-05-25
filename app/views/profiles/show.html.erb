@@ -1,4 +1,4 @@
-<% @page_title = "Personal Details" %>
+<% @page_title = "Personal Profile" %>
 
 <!-- Page Open Graph Meta Tags -->
 
@@ -27,9 +27,9 @@
                   <% if @member.id == current_member.id %>
                 <div class="pull-right" style="padding-top: 58px; position: relative; font-size: 14px; text-decoration: none; margin-right: 5px;">
                     <% if @member.profile.blank? %>
-                    <%= link_to "Edit Profile", new_profile_path  %>&nbsp <i class="fa fa-pencil fa-2x"></i></a></div>
-                    <% else %>
-                    <%= link_to "Edit Profile", edit_profile_path(:member_id => current_member.id)  %>&nbsp <i class="fa fa-pencil fa-2x"></i></a></div>
+                      <%= link_to "Edit Profile", new_profile_path  %>&nbsp <i class="fa fa-pencil fa-2x"></i></a></div>
+                      <% else %>
+                      <%= link_to "Edit Profile", edit_profile_path(:member_id => current_member.id)  %>&nbsp <i class="fa fa-pencil fa-2x"></i></a></div>
                     <% end %>
                 <% end %>
             <% end %>
@@ -122,6 +122,7 @@
                                         <div class="sparkline-line width-100" sparkHeight="20" sparkWidth="100%" data-data="[ 315, 568, 323, 517, 520, 368, 311, 284 ]"></div>
                                       </td>
                                     </tr>
+                                    
                                     
                                   </tbody>
                                 </table>

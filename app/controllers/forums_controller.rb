@@ -1,6 +1,8 @@
 class ForumsController < ApplicationController
   before_action :set_forum, only: [:show, :edit, :update, :destroy]
 
+  layout 'common'
+
   # GET /forums
   # GET /forums.json
   def index
