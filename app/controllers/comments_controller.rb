@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
 
 def create
-        @community = Community.find(params[:community_id])
+        @community = Community.friendly.find(params[:community_id])
         @comment = @community.comments.new(comment_params)
         
 
@@ -15,7 +15,7 @@ def create
 	    
 	end
     @comment.save
-    redirect_to community_path(@community)
+    redirect_to community_path(@community.slug)
     
   end
  

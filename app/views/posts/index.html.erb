@@ -9,19 +9,70 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
+  
   <tbody>
-    <% @posts.each do |post| %>
+
+    
+      <div class="heading"><h1>Topics</h1></div>
+        <div class="container">
+          <div class="row">
+            <div class="row">
+              
+            </div>
+            <div class="row">
+              <%= link_to 'Join the discussion', new_topic_post_path, :class => "new-topic" %>
+            </div>
+          <% unless @topic.posts.empty? %>
+          <% @topic.posts.each do |post| %>
+            <div class="row" style="margin: 60px;">
+              <div class="col-md-2">
+                <div class="author-avatar">
+                  <%= image_tag "avatar/missing.jpg",  :style => "width: 100px; height: 100px; border-radius: 50%;" %>
+                </div>
+                <div class="author">
+                  Author details
+                </div>
+              </div>
+              <div class="col-md-10">
+              <div class="forum-reply">
+                <div class="row">
+                  <h3 style="color: #B0B0B0;"> <%= post.subject %> </h3>
+                  <hr>
+                  <div class="post-content">
+                     <p><%= post.body %></p>
+                  </div>
+                  <hr>
+                  <div class="post-footer">
+                    <%= post.updated_at %> 
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 35px;">
+              <%= link_to 'Join the discussion', new_topic_post_path, :class => "new-topic" %>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+
+<br/>
+<h2>Reply</h2>
+<%= render :partial => @post = Post.new, :locals => { :button_name => 'Reply' } %>
+
+
       <tr>
-        <td><%= post.content %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= post.content %></td>
+        <td><%#= link_to 'Show', post %></td>
+        <td><%#= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%#= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    
   </tbody>
+  
 </table>
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+

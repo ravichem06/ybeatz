@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  
+  
   mount Ckeditor::Engine => '/ckeditor'
   root 'landing_page#index'
 
@@ -8,16 +10,17 @@ Rails.application.routes.draw do
   get 'editors/index', path: 'editors/editor-panel'
   get 'admin/index', path: '/admin-panel'
 
-  resources :posts
-  resources :topics
-  resources :forums
+  
+  resources :topics, path: 'forum' do
+    resources :posts
+  end
   
   devise_for :members, controllers: { registrations: "registrations" }
   resources :members 
   
   resources :profiles
 
-  resources :communities, path: 'post' do
+  resources :communities, path: 'community' do
     resources :comments
   end
 

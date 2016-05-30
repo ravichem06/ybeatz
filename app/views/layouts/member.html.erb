@@ -91,32 +91,7 @@
   
         <!-- Header -->
       
-<div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="logo span4">
-          <a class="navbar-brand" href="/"><%= image_tag 'https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/logo2.png' %></a>
-
-          </div>
-        </div>
-
-<div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-left">
-            <li><%=link_to("HOME", :controller=> "landing_page")%></li>
-            
-            <li><%=link_to("COMMUNITY", :controller=> "communities")%></li>
-            
-           </ul>
-           
-          <%= render 'shared/navigation_right_dropdown'%>
-</div>
-</div> 
-</div>
+<%= render 'shared/navbar_top_fixed'%>
 
 
 <!-- Notification -->

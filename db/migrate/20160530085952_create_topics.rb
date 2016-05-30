@@ -2,8 +2,8 @@ class CreateTopics < ActiveRecord::Migration
   def change
     create_table :topics do |t|
       t.string :name
-      t.integer :last_poster_id
-      t.datetime :last_post_at
+      t.text :description
+      t.references :member, index: true, foreign_key: true
 
       t.timestamps null: false
     end

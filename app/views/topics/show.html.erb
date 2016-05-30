@@ -1,42 +1,56 @@
-<div class="heading"><h1>Topics</h1></div>
-<div class="container">
-	<div class="row">
-		<div class="row">
-			
-		</div>
-		<div class="row">
-			<%= link_to 'Join the discussion', new_post_path, :class => "new-topic" %>
-		</div>
+     <div class="heading"><h1><%= @topic.name %></h1></div>
+        <div class="container">
+          <div class="row">
+            <div class="row">
+              
+            </div>
+            <!-- <div class="row">
+              <%#= link_to 'Join the discussion', new_post_path, :class => "new-topic" %>
+            </div> -->
+          <% unless @topic.posts.empty? %>
+          <% @topic.posts.each do |post| %>
+            <div class="row" style="margin: 30px;">
+              <div class="col-md-2">
+                <div class="author-avatar">
+                <% if post.member.present? %>
+                  <%= image_tag post.member.avatar.url(:medium),  :style => "width: 100px; height: 100px; border-radius: 50%;"  %>
+                <% else %>
+                  <%= image_tag "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/avatar/no-avatar.jpg",  :style => "width: 100px; height: 100px; border-radius: 50%;"  %>
+                <% end %>
+                </div>
+                <div class="author">
+                  <%= post.member.name + " " + post.member.surname if post.member.present? %>
+                </div>
+              </div>
+              <div class="col-md-10">
+              <div class="forum-reply">
+                <div class="row">
+                  <h3 style="color: #B0B0B0;"> <%= post.subject %> </h3>
+                  <hr>
+                  <div class="post-content">
+                     <p><%= post.body %></p>
+                  </div>
+                  <hr>
+                  <div class="post-footer">
+                    <%= post.updated_at %> 
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row" style="margin-bottom: 35px;">
+              <%#= link_to 'Join the discussion', new_post_path, :class => "new-topic" %>
+            </div> -->
+            <% end %>
+            <% end %>
+          </div>
+        
 
-		<div class="row" style="margin: 60px;">
-			<div class="col-md-2">
-				<div class="author-avatar">
-					<%= image_tag "avatar/missing.jpg",  :style => "width: 100px; height: 100px; border-radius: 50%;" %>
-				</div>
-				<div class="author">
-					Author details
-				</div>
-			</div>
-			<div class="col-md-10">
-			<div class="forum-reply">
-				<div class="row">
-					<h3 style="color: #B0B0B0;"> Post Title </h3>
-					<hr>
-					<div class="post-content">
-						 <p>Hello,
+<br/>
 
-We are glad to offer you the first Metro design theme for phpBB 3! It's clean, simple and easily customizable. We are sure you will love it!</p>
-					</div>
-					<hr>
-					<div class="post-footer">
-						24th May 2015	
-					</div>
-				</div>
-				</div>
-			</div>
-		</div>
-		<div class="row" style="margin-bottom: 35px;">
-			<%= link_to 'Join the discussion', new_post_path, :class => "new-topic" %>
-		</div>
-	</div>
+<%= render 'posts/post' %>
+
 </div>
+
+     
+

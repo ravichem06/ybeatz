@@ -3,7 +3,7 @@ class CreateCommunities < ActiveRecord::Migration
     create_table :communities do |t|
       t.string :name
       t.string :title
-      t.string :content
+      t.text :content
 
       t.timestamps null: false
     end

@@ -9,6 +9,8 @@ class Member < ActiveRecord::Base
   has_one :profile
   has_many :comments
   has_many :communities
+  has_many :topics
+  has_many :posts
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "50x50>" }, :default_url => "avatar/missing.jpg"
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
@@ -24,6 +26,19 @@ class Member < ActiveRecord::Base
 
   def first_name_and_surname
     "#{name}-#{surname}"
+  end
+
+  def confirm!
+    welcome_mail
+    super
+  end
+
+  # ...
+
+private
+
+  def welcome_mail
+    UserMailer.welcome_mail(self).deliver
   end
 
 

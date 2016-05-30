@@ -1,0 +1,40 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="logo span4">
+      <a class="navbar-brand" href="/"><%= image_tag 'https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/logo2.png' %></a>
+
+      </div>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-left">
+      
+        <% if @page_title == "Home" %>
+          <li class="active"><%=link_to("HOME", :controller=> "landing_page")%></li>
+        <% else %>
+          <li><%=link_to("HOME", :controller=> "landing_page")%></li>
+        <% end %>
+
+        <% if @page_title == "Community" %>
+          <li class="active"><%=link_to("COMMUNITY", :controller=> "communities")%></li>
+        <% else %>
+          <li><%=link_to("COMMUNITY", :controller=> "communities")%></li>
+        <% end %>
+
+        <%if @page_title == "Forum" %>
+          <li class="active"><%=link_to("FORUM", :controller=> "topics")%></li>
+        <% else %>
+          <li><%=link_to("FORUM", :controller=> "topics")%></li>
+        <% end %>
+      </ul>
+       
+      <%= render 'shared/navigation_right_dropdown'%>
+    </div>
+  </div> 
+</div>

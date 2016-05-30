@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  last_poster_id: 1
-  last_post_at: 2016-05-21 01:49:01
+  description: MyText
+  member_id: 
 
 two:
   name: MyString
-  last_poster_id: 1
-  last_post_at: 2016-05-21 01:49:01
+  description: MyText
+  member_id: 

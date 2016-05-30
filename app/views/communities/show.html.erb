@@ -167,10 +167,10 @@ src="https://www.facebook.com/tr?id=1627308574197447&ev=PageView&noscript=1"
                       <% @community.comments.each do |comment| %>
                       <div class="row comments-view" >
                         <div class="col-xs-2">
-                          <% if member_signed_in? %>
-                          <%= image_tag comment.member.avatar.url(:thumb), :style => "width: 100px; height: 80px;"  %>
+                          <% if comment.member.present? %>
+                          <%= image_tag comment.member.avatar.url(:medium), :style => "width: 90px; height: 80px;"  %>
                           <% else %>
-                          <%= image_tag "avatar/missing.jpg", :style => "width: 60px; height: 50px;" %>
+                          <%= image_tag "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/avatar/no-avatar.jpg", :style => "width: 90px; height: 80px;" %>
                           <% end %>
                         </div>
                         <div class="col-xs-10">

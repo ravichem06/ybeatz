@@ -1,3 +1,4 @@
+  <% @page_title = "Forum" %>
   <div class="heading">
     <span class = "fa fa-envelope fa-5x"><h1><strong>Forum</strong></h1>
     </span>
@@ -22,30 +23,30 @@
               
             </thead>
             <tbody>
-                  
-                 <tr style="color: #A8A8A8;">
-                  <td title="No unread posts" class="expand footable-visible footable-first-column"><span class="footable-toggle"></span>
-                    <span class="desc-wrapper">
-                      <div class="topic">
-                      Password protected<br></div>
-                      <span class="description">Password protected</span><br>                       
-                    </span>
-                  </td>
-                  <td class="stats-col footable-visible">
-                     <span class="stats-wrapper">
-                     1&nbsp;Topics&nbsp;<br>1&nbsp;Posts 
-                     </span>
-                  </td> 
-                  <td class="footable-visible footable-last-column">
-                    <span class="last-wrapper text-overflow">
-                                by&nbsp;SiteSplat
-                      <i class="mobile-post fa fa-sign-out"></i><br>
-                      <span class="forum-time">10 Aug 2014, 21:16</span>        
-                    </span>
-                  </td>
-                    
-                </tr>
-              
+                <% @topics.each do |forum| %> 
+                  <tr style="color: #A8A8A8;">
+                    <td title="No unread posts" class="expand footable-visible footable-first-column"><span class="footable-toggle"></span>
+                      <span class="desc-wrapper">
+                        <div class="topic">
+                        <%=link_to forum.name, forum %><br></div>
+                        <span class="description"><%#= forum.description if forum.description %></span><br>                       
+                      </span>
+                    </td>
+                    <td class="stats-col footable-visible">
+                       <span class="stats-wrapper">
+                       <%= forum.posts.count  %>&nbsp;Posts 
+                       </span>
+                    </td>
+
+                    <td class="footable-visible footable-last-column">
+                      <span class="last-wrapper text-overflow">
+                                  by&nbsp;<%#= forum.member %>
+                        <i class="mobile-post fa fa-sign-out"></i><br>
+                        <span class="forum-time"><%= forum.updated_at %></span>        
+                      </span>
+                    </td>
+                  </tr>
+                <% end %>
             <!-- Table footer not used at the moment
               <tfoot>
                      <tr>
@@ -66,8 +67,11 @@
     <div class="col-md-3">
     </div>
 
-  </div>
 
+  </div>
+    <div class="row" style="padding-left: 15px;">
+      <%= link_to 'Post a new topic', new_topic_path, :class => "new-topic" %>
+    </div>
 <br>
 
 

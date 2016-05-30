@@ -1,0 +1,24 @@
+<%= form_for([@topic, @topic.posts.build]) do |f| %>
+  <div class="row">
+    <div class="form">
+    <div class="reply-form">
+      <h3>Reply</h3>
+      <div class="form-group">
+          <%= f.text_field :body, :placeholder => "SUBJECT*", :required => true, :rows => 8, :class => "reply-input" %>
+      </div>
+      <div class="form-group">
+          <%= f.text_area :body, :placeholder => "YOUR REPLY*", :required => true, :rows => 8, :class => "reply-box" %>
+      </div>
+      <div class="hidden">
+          <%#= f.association :topic %>
+
+          <%= f.text_field :member_id, :value => "#{current_member.id}" if member_signed_in? %>
+      </div>
+      
+      <div class="form-group">
+          <%= f.submit 'POST', :class => "reply-button" %>
+      </div>
+      </div>
+    </div>
+  </div>
+<% end %>
