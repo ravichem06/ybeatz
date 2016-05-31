@@ -55,11 +55,23 @@ gem 'ckeditor'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
   gem 'web-console', '~> 2.0'
+end
+
+group :development, :test do
+  
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
 end
 
 group :production do

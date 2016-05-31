@@ -1,14 +1,15 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  
+  require 'will_paginate/array'
   
   layout 'common'
 
   def create
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.friendly.find(params[:topic_id])
     @post = @topic.posts.new(post_params)
     @post.save
-    redirect_to topic_path(@topic)    
+    redirect_to topic_path(@topic)   
+
       
     
   end

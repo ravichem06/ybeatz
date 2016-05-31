@@ -1,15 +1,19 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
   layout 'common'
+  require 'will_paginate/array'
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    @topics = Topic.friendly.where(params[:slug]).paginate(page: params[:page], per_page: 10)
   end
 
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @topic = Topic.friendly.find(params[:id])
+    @post = @topic.posts.paginate(page: params[:page], per_page: 5)
+
   end
 
   # GET /topics/new
@@ -64,7 +68,7 @@ class TopicsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_topic
-      @topic = Topic.find(params[:id])
+      @topic = Topic.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

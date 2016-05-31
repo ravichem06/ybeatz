@@ -28,7 +28,7 @@
                     <td title="No unread posts" class="expand footable-visible footable-first-column"><span class="footable-toggle"></span>
                       <span class="desc-wrapper">
                         <div class="topic">
-                        <%=link_to forum.name, forum %><br></div>
+                        <%=link_to forum.name, topic_path(:id => forum.slug) %><br></div>
                         <span class="description"><%#= forum.description if forum.description %></span><br>                       
                       </span>
                     </td>
