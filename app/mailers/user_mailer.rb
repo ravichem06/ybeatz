@@ -37,6 +37,8 @@ def thank_you_mail(contact)
 
 end
 
-
-
+def contact_us_mail(contact)
+  @contact = contact
+  mail(:to => "support@ybeatz.com", :subject => @contact.subject  )
+end
 end

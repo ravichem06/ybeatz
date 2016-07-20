@@ -1,0 +1,32 @@
+<%if @community.comments.empty? %>
+                          
+                      <% else %> 
+                      <div  class="heading-divider"> 
+                      <h2><%= @community.comments.count %> Comments</h2>
+                      </div>
+                      <% end %>
+                        
+
+                      <% @community.comments.each do |comment| %>
+                      <div class="row comments-view" >
+                        <div class="col-xs-2">
+                          <% if comment.member.present? %>
+                          <%= image_tag comment.member.avatar.url(:medium), :style => "width: 90px; height: 80px;"  %>
+                          <% else %>
+                          <%= image_tag "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/avatar/no-avatar.jpg", :style => "width: 90px; height: 80px;" %>
+                          <% end %>
+                        </div>
+                        <div class="col-xs-10">
+                            <div class="comment-header">
+                              <h3><%= comment.commenter.capitalize %></h3> 
+                              <div class="comment-time">
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= comment.created_at.strftime("%-d %^B, %Y at %H:%M") %>
+                              </div>
+                            </div>
+                           <%= comment.content %>
+                           <br/>
+                        </div>  
+                      </div>
+                      <% end %>
+                  </div>
+                                    

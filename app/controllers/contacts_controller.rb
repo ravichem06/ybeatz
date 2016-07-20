@@ -9,6 +9,7 @@ layout 'common'
     @contact = Contact.new(contact_us_params)
     # @contact.save
     UserMailer.thank_you_mail(@contact).deliver
+    UserMailer.contact_us_mail(@contact).deliver
     @contact.request = request
     if @contact.deliver
       
