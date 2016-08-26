@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
 
-  Paperclip.options[:command_path] = 'C:\Program Files (x86)\GnuWin32\bin'
+  #Paperclip.options[:command_path] = 'C:\Program Files (x86)\GnuWin32\bin'
   
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
