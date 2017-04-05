@@ -5,27 +5,21 @@ layout 'landing_page'
 
 def index
 	
-@subscriber = Subscriber.new
+  @subscriber = Subscriber.new
 
 end
 
 
-
-
-def create
+  def create
     # Instantiate a new object using form parameters
     
     @subscriber = Subscriber.new(subscriber_params)
     
     # Save the object
-       if @subscriber.save(subscriber_params)
+       if @subscriber.save
            # puts "Subscriber has been saved."
           #@subscriber.subscribe
         
-    
- 
-
-          # If save succeeds, redirect to the index action
           flash[:notice] = "Thank You for subscribing. Your Email ID: #{@subscriber.email} has been subscribed."
           
           redirect_to(:action => 'index')
@@ -36,12 +30,6 @@ def create
       redirect_to(:action => 'index')
     end
   end
-
-
-
-  
-  
-  
 
   private
 

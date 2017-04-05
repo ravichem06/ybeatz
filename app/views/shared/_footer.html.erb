@@ -5,7 +5,7 @@
 
       <div>
 
-        <%= form_for(:subscriber, :url => {:controller =>'landing_page',:action => 'create'}) do |f| %>
+        <%= form_for(:subscriber, url: {:controller => :landing_page, :action => :create}) do |f| %>
             <%= f.text_field :name, :placeholder=> 'Your Name...', :required => true , :label => false, :class=> "subscribe-input"%>
             <%= f.email_field :email, :placeholder=> 'Your Email...', :required => true , :label => false, :class=> "subscribe-input"%>
             <%= f.submit 'Subscribe', :class=> "subscribe-submit" %>
@@ -27,8 +27,7 @@
                <div class="span12">
                     
                      <div class="social-links">
-                        <div style="padding-bottom: 10px;    color: whitesmoke;
-    font-size: -webkit-xxx-large;"><strong>FOLLOW US</strong><br/>
+                        <div style="padding-bottom: 10px; color: whitesmoke;font-size: -webkit-xxx-large;"><strong>FOLLOW US</strong><br/>
                         </div>
                             <a class="facebook" href="https://www.facebook.com/ybeatz4artists/"></a>
                             <a class="twitter" href="#"></a>

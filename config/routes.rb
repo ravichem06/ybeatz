@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   
   mount Ckeditor::Engine => '/ckeditor'
   root 'landing_page#index'
-
-  get "sitemap.xml.gz" => "sitemaps#sitemap", format: :xml, as: :sitemap
+  resources :landing_page, only:[:index, :create]
+  get "sitemap.xml.gz", to: "sitemaps#sitemap", format: :xml, as: :sitemap
   
-  get 'editors/index', path: 'editors/editor-panel'
-  get 'admin/index', path: '/admin-panel'
+  get 'editors/editor-panel', to: 'editors#index' 
+  get '/admin-panel', to: 'admin#index'
 
   
   resources :topics, path: 'forum' do
@@ -24,12 +24,12 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-    get 'auth/:provider/callback', to: 'sessions#create'
-    get 'auth/failure', to: redirect('/')
-    get 'signout', to: 'sessions#destroy', as: 'signout'
+    # get 'auth/:provider/callback', to: 'sessions#create'
+    # get 'auth/failure', to: redirect('/')
+    # get '/signout', to: 'sessions#destroy', as: 'signout'
 
-    resources :sessions, only: [:create, :destroy]
-    resource :home, only: [:show]
+    
+   
 
     
   
@@ -39,14 +39,14 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   
 
-  match '/contacts',     to: 'contacts#new',             via: 'get'
-  resources "contacts", only: [:new, :create]
-  resources :subscribers, only: [:index, :create]
-  match ':controller(/:action(/:id))', :via => [:get, :post]
+  get '/contacts', to: 'contacts#new'
+  resources :contacts, only: [ :create]
+  
+  
 
   devise_scope :member do 
     
-    match '/sessions/member', to: 'devise/sessions#create', via: :post
+    post '/sessions/member', to: 'devise/sessions#create'
   end
 
   # Example of regular route:

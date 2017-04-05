@@ -5,11 +5,11 @@ jQuery(document).ready(function() {
         Product showcase background
     */
     $('.product-showcase').backstretch([
-      "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/backgrounds/first.jpeg"
-    , "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/backgrounds/second.jpeg"
-    , "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/backgrounds/third.png"
-    , "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/backgrounds/fourth.jpeg"
-    , "https://s3-ap-southeast-1.amazonaws.com/ybeatz/assets/images/backgrounds/fifth.jpeg"
+      "https://s3.ap-south-1.amazonaws.com/ybeatz-production/assets/images/backgrounds/first.jpeg"
+    , "https://s3.ap-south-1.amazonaws.com/ybeatz-production/assets/images/backgrounds/second.jpeg"
+    , "https://s3.ap-south-1.amazonaws.com/ybeatz-production/assets/images/backgrounds/third.png"
+    , "https://s3.ap-south-1.amazonaws.com/ybeatz-production/assets/images/backgrounds/fourth.jpeg"
+    , "https://s3.ap-south-1.amazonaws.com/ybeatz-production/assets/images/backgrounds/fifth.jpeg"
     ], {duration: 3000, fade: 750});
 
     /*

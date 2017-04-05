@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: prototype_production
+  database: <%= ENV['JAWSDB_URL'] %>
   username: prototype
   password: <%= ENV['PROTOTYPE_DATABASE_PASSWORD'] %>

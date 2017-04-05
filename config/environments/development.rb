@@ -42,16 +42,16 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.perform_deliveries = true
-config.action_mailer.smtp_settings = {
-:address              => "smtp-relay.sendinblue.com",
-:port                 => 587,
-:user_name            => Rails.application.secrets.email_provider_username,
-:password             => Rails.application.secrets.email_provider_password,
-:authentication       => 'plain',
-:enable_starttls_auto => true
-}
+  config.action_mailer.default_url_options = { :host => ENV["domain_name"] }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+  :address              => "smtp-relay.sendinblue.com",
+  :port                 => 587,
+  :user_name            => ENV["email_provider_username"],
+  :password             => ENV["email_provider_password"],
+  :authentication       => 'plain',
+  :enable_starttls_auto => true
+  }
 
 end
